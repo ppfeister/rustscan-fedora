@@ -14,6 +14,7 @@ Patch0: 0001-rc1.patch
 Patch1: 0002-Downgrade-anstream.patch
 
 BuildRequires: cargo-rpm-macros >= 24
+BuildRequires: help2man
 
 %global _description %{expand:
 RustScan is a modern take on the port scanner. Sleek & fast. All while
@@ -41,9 +42,19 @@ making it the best port scanner for you.
 %install
 %cargo_install
 
+install -d '%{buildroot}%{_mandir}/man1'
+help2man \
+    --no-info \
+    --version-string='%{version}' \
+    --name='%{summary}' \
+    --output='%{buildroot}%{_mandir}/man1/rustscan.1' \
+    '%{buildroot}%{_bindir}/rustscan'
+
 
 %files
+%doc README.md
 %{_bindir}/rustscan
+%{_mandir}/man1/rustscan.1*
 
 
 %changelog
