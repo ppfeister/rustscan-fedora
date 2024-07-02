@@ -1,0 +1,36 @@
+From 1f3426f95f65f6f80b095fdadbbae7a192164350 Mon Sep 17 00:00:00 2001
+From: Paul Pfeister <code@pfeister.dev>
+Date: Tue, 2 Jul 2024 01:47:42 -0400
+Subject: [PATCH] Fix dependency versions
+
+---
+ Cargo.toml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 709ce1f..7811025 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -21,7 +21,7 @@ colored = "2.1.0"
+ structopt = "0.3.20"
+ async-std = "1.7.0"
+ futures = "0.3"
+-rlimit = "0.8.3"
++rlimit = "0.10.1"
+ log = "0.4.0"
+ env_logger = "0.8.2"
+ dirs = "3.0.1"
+@@ -32,8 +32,8 @@ ansi_term = "0.12.1"
+ toml = "0.5.7"
+ serde = "1.0.124"
+ serde_derive = "1.0.116"
+-cidr-utils = "0.5.1"
+-itertools = "0.9.0"
++cidr-utils = "0.6.1"
++itertools = "0.13.0"
+ trust-dns-resolver = { version = "0.23.2", features = ["dns-over-rustls"] }
+ anyhow = "1.0.40"
+ subprocess = "0.2.6"
+-- 
+2.45.1
+
