@@ -52,6 +52,7 @@ help2man \
 
 
 %files
+%license LICENSE
 %doc README.md
 %{_bindir}/rustscan
 %{_mandir}/man1/rustscan.1*
