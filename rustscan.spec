@@ -11,6 +11,7 @@ URL: https://github.com/rustscan/rustscan
 Source0: %{URL}/archive/%{version}.tar.gz
 
 Patch0: 0001-rc1.patch
+Patch1: 0002-Downgrade-anstream.patch
 
 BuildRequires: cargo-rpm-macros >= 24
 
