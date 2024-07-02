@@ -46,5 +46,5 @@ making it the best port scanner for you.
 
 
 %changelog
-* Tue Jan 15 2022 Paul Pfeister <code@pfeister.dev> - 2.2.3-1
+* Tue Jul 02 2024 Paul Pfeister <code@pfeister.dev> - 2.2.3-1
 - Initial packaging
