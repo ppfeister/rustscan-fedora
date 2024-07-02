@@ -10,13 +10,9 @@ License: GPL-3.0-only
 URL: https://github.com/rustscan/rustscan
 Source0: %{URL}/archive/%{version}.tar.gz
 
-Patch0: 0001-Fix-dependency-versions.patch
+Patch0: 0001-rc1.patch
 
 BuildRequires: cargo-rpm-macros >= 24
-BuildRequires: cargo >= 1.59
-BuildRequires: rust >= 1.59
-#BuildRequires: gcc
-
 
 %global _description %{expand:
 RustScan is a modern take on the port scanner. Sleek & fast. All while

@@ -1,0 +1,4044 @@
+From af34aa4d07610a58fdfe96fc906daea8bbefdd19 Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Sun, 5 May 2024 13:50:42 +0100
+Subject: [PATCH 01/18] Bump toml from 0.5.11 to 0.8.12 (#582)
+
+Bumps [toml](https://github.com/toml-rs/toml) from 0.5.11 to 0.8.12.
+- [Commits](https://github.com/toml-rs/toml/compare/toml-v0.5.11...toml-v0.8.12)
+
+---
+updated-dependencies:
+- dependency-name: toml
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Cargo.lock | 71 +++++++++++++++++++++++++++++++++++++++++++++++++++---
+ Cargo.toml |  2 +-
+ 2 files changed, 69 insertions(+), 4 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index dd4b8365..0bdbd66c 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -423,6 +423,12 @@ dependencies = [
+  "termcolor",
+ ]
+ 
++[[package]]
++name = "equivalent"
++version = "1.0.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
++
+ [[package]]
+ name = "errno"
+ version = "0.3.8"
+@@ -677,6 +683,12 @@ dependencies = [
+  "ahash",
+ ]
+ 
++[[package]]
++name = "hashbrown"
++version = "0.14.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e5274423e17b7c9fc20b6e7e208532f9b19825d82dfd615708b70edd83df41f1"
++
+ [[package]]
+ name = "heck"
+ version = "0.3.3"
+@@ -744,6 +756,16 @@ dependencies = [
+  "unicode-normalization",
+ ]
+ 
++[[package]]
++name = "indexmap"
++version = "2.2.6"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "168fb715dda47215e360912c096649d23d58bf392ac62f73919e831745e40f26"
++dependencies = [
++ "equivalent",
++ "hashbrown 0.14.5",
++]
++
+ [[package]]
+ name = "instant"
+ version = "0.1.12"
+@@ -1411,6 +1433,15 @@ dependencies = [
+  "serde",
+ ]
+ 
++[[package]]
++name = "serde_spanned"
++version = "0.6.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "eb3622f419d1296904700073ea6cc23ad690adbd66f13ea683df73298736f0c1"
++dependencies = [
++ "serde",
++]
++
+ [[package]]
+ name = "slab"
+ version = "0.4.9"
+@@ -1529,7 +1560,7 @@ version = "0.5.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "512104f982ce6f50def5340f9d7d14cc21f7a859e9ccd251aa19d12e1345c070"
+ dependencies = [
+- "hashbrown",
++ "hashbrown 0.13.2",
+  "serde",
+  "serde_json",
+ ]
+@@ -1606,11 +1637,36 @@ dependencies = [
+ 
+ [[package]]
+ name = "toml"
+-version = "0.5.11"
++version = "0.8.12"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f4f7f0dd8d50a853a531c426359045b1998f04219d88799810762cd4ad314234"
++checksum = "e9dd1545e8208b4a5af1aa9bbd0b4cf7e9ea08fabc5d0a5c67fcaafa17433aa3"
+ dependencies = [
+  "serde",
++ "serde_spanned",
++ "toml_datetime",
++ "toml_edit",
++]
++
++[[package]]
++name = "toml_datetime"
++version = "0.6.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "3550f4e9685620ac18a50ed434eb3aec30db8ba93b0287467bca5826ea25baf1"
++dependencies = [
++ "serde",
++]
++
++[[package]]
++name = "toml_edit"
++version = "0.22.12"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d3328d4f68a705b2a4498da1d580585d39a6510f98318a2cec3018a7ec61ddef"
++dependencies = [
++ "indexmap",
++ "serde",
++ "serde_spanned",
++ "toml_datetime",
++ "winnow",
+ ]
+ 
+ [[package]]
+@@ -2050,6 +2106,15 @@ version = "0.52.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "bec47e5bfd1bff0eeaf6d8b485cc1074891a197ab4225d504cb7a1ab88b02bf0"
+ 
++[[package]]
++name = "winnow"
++version = "0.6.7"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "14b9415ee827af173ebb3f15f9083df5a122eb93572ec28741fb153356ea2578"
++dependencies = [
++ "memchr",
++]
++
+ [[package]]
+ name = "winreg"
+ version = "0.50.0"
+diff --git a/Cargo.toml b/Cargo.toml
+index 709ce1f1..2b4f6323 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -29,7 +29,7 @@ gcd = "2.0.1"
+ rand = "0.7.3"
+ colorful = "0.2.1"
+ ansi_term = "0.12.1"
+-toml = "0.5.7"
++toml = "0.8.12"
+ serde = "1.0.124"
+ serde_derive = "1.0.116"
+ cidr-utils = "0.5.1"
+
+From 99b00c091cdee7845acd6da30403577ad78694db Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Sun, 5 May 2024 13:50:57 +0100
+Subject: [PATCH 02/18] Bump env_logger from 0.8.4 to 0.11.3 (#583)
+
+Bumps [env_logger](https://github.com/rust-cli/env_logger) from 0.8.4 to 0.11.3.
+- [Release notes](https://github.com/rust-cli/env_logger/releases)
+- [Changelog](https://github.com/rust-cli/env_logger/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/rust-cli/env_logger/compare/v0.8.4...v0.11.3)
+
+---
+updated-dependencies:
+- dependency-name: env_logger
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Cargo.lock | 98 +++++++++++++++++++++++++++++++++++++++++-------------
+ Cargo.toml |  2 +-
+ 2 files changed, 76 insertions(+), 24 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 0bdbd66c..83df422a 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -47,6 +47,54 @@ dependencies = [
+  "winapi",
+ ]
+ 
++[[package]]
++name = "anstream"
++version = "0.6.13"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d96bd03f33fe50a863e394ee9718a706f988b9079b20c3784fb726e7678b62fb"
++dependencies = [
++ "anstyle",
++ "anstyle-parse",
++ "anstyle-query",
++ "anstyle-wincon",
++ "colorchoice",
++ "utf8parse",
++]
++
++[[package]]
++name = "anstyle"
++version = "1.0.6"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8901269c6307e8d93993578286ac0edf7f195079ffff5ebdeea6a59ffb7e36bc"
++
++[[package]]
++name = "anstyle-parse"
++version = "0.2.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c75ac65da39e5fe5ab759307499ddad880d724eed2f6ce5b5e8a26f4f387928c"
++dependencies = [
++ "utf8parse",
++]
++
++[[package]]
++name = "anstyle-query"
++version = "1.0.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e28923312444cdd728e4738b3f9c9cac739500909bb3d3c94b43551b16517648"
++dependencies = [
++ "windows-sys 0.52.0",
++]
++
++[[package]]
++name = "anstyle-wincon"
++version = "3.0.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "1cd54b81ec8d6180e24654d0b371ad22fc3dd083b6ff8ba325b72e00c87660a7"
++dependencies = [
++ "anstyle",
++ "windows-sys 0.52.0",
++]
++
+ [[package]]
+ name = "anyhow"
+ version = "1.0.82"
+@@ -329,6 +377,12 @@ dependencies = [
+  "vec_map",
+ ]
+ 
++[[package]]
++name = "colorchoice"
++version = "1.0.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "acbf1af155f9b9ef647e42cdc158db4b64a1b61f743629225fde6f3e0be2a7c7"
++
+ [[package]]
+ name = "colored"
+ version = "2.1.0"
+@@ -410,17 +464,27 @@ dependencies = [
+  "syn 2.0.60",
+ ]
+ 
++[[package]]
++name = "env_filter"
++version = "0.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "a009aa4810eb158359dda09d0c87378e4bbb89b5a801f016885a4707ba24f7ea"
++dependencies = [
++ "log",
++ "regex",
++]
++
+ [[package]]
+ name = "env_logger"
+-version = "0.8.4"
++version = "0.11.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a19187fea3ac7e84da7dacf48de0c45d63c6a76f9490dae389aead16c243fce3"
++checksum = "38b35839ba51819680ba087cd351788c9a3c476841207e0b8cee0b04722343b9"
+ dependencies = [
+- "atty",
++ "anstream",
++ "anstyle",
++ "env_filter",
+  "humantime",
+  "log",
+- "regex",
+- "termcolor",
+ ]
+ 
+ [[package]]
+@@ -1545,15 +1609,6 @@ dependencies = [
+  "unicode-ident",
+ ]
+ 
+-[[package]]
+-name = "termcolor"
+-version = "1.4.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "06794f8f6c5c898b3275aebefa6b8a1cb24cd2c6c79397ab15774837a0bc5755"
+-dependencies = [
+- "winapi-util",
+-]
+-
+ [[package]]
+ name = "text_placeholder"
+ version = "0.5.0"
+@@ -1803,6 +1858,12 @@ dependencies = [
+  "percent-encoding",
+ ]
+ 
++[[package]]
++name = "utf8parse"
++version = "0.2.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "711b9620af191e0cdc7468a8d14e709c3dcdb115b36f838e601583af800a370a"
++
+ [[package]]
+ name = "value-bag"
+ version = "1.9.0"
+@@ -1952,15 +2013,6 @@ version = "0.4.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6"
+ 
+-[[package]]
+-name = "winapi-util"
+-version = "0.1.8"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "4d4cc384e1e73b93bafa6fb4f1df8c41695c8a91cf9c4c64358067d15a7b6c6b"
+-dependencies = [
+- "windows-sys 0.52.0",
+-]
+-
+ [[package]]
+ name = "winapi-x86_64-pc-windows-gnu"
+ version = "0.4.0"
+diff --git a/Cargo.toml b/Cargo.toml
+index 2b4f6323..090a0d7a 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -23,7 +23,7 @@ async-std = "1.7.0"
+ futures = "0.3"
+ rlimit = "0.8.3"
+ log = "0.4.0"
+-env_logger = "0.8.2"
++env_logger = "0.11.3"
+ dirs = "3.0.1"
+ gcd = "2.0.1"
+ rand = "0.7.3"
+
+From d471065dd2f08a4bff5f506753d09b223522aaca Mon Sep 17 00:00:00 2001
+From: "Roger G. Coram" <psypherpunk@gmail.com>
+Date: Thu, 9 May 2024 08:14:42 +0100
+Subject: [PATCH 03/18] refactor: move address-related functions (#585)
+
+* refactor: move address-related functions
+
+move functions for address-parsing/-resolution to a submodule.
+
+fix #580
+
+* test: add documentation tests
+---
+ src/address.rs | 207 +++++++++++++++++++++++++++++++++++++++++++++++++
+ src/lib.rs     |   2 +
+ src/main.rs    | 191 ++-------------------------------------------
+ 3 files changed, 217 insertions(+), 183 deletions(-)
+ create mode 100644 src/address.rs
+
+diff --git a/src/address.rs b/src/address.rs
+new file mode 100644
+index 00000000..550b8090
+--- /dev/null
++++ b/src/address.rs
+@@ -0,0 +1,207 @@
++//! Provides functions to parse input IP addresses, CIDRs or files.
++use std::fs::File;
++use std::io::{prelude::*, BufReader};
++use std::net::{IpAddr, ToSocketAddrs};
++use std::path::Path;
++
++use cidr_utils::cidr::IpCidr;
++use log::debug;
++use trust_dns_resolver::{
++    config::{ResolverConfig, ResolverOpts},
++    Resolver,
++};
++
++use crate::input::Opts;
++use crate::warning;
++
++/// Parses the string(s) into IP addresses.
++///
++/// Goes through all possible IP inputs (files or via argparsing).
++///
++/// ```rust
++/// # use rustscan::input::Opts;
++/// # use rustscan::address::parse_addresses;
++/// let mut opts = Opts::default();
++/// opts.addresses = vec!["192.168.0.0/30".to_owned()];
++///
++/// let ips = parse_addresses(&opts);
++/// ```
++pub fn parse_addresses(input: &Opts) -> Vec<IpAddr> {
++    let mut ips: Vec<IpAddr> = Vec::new();
++    let mut unresolved_addresses: Vec<&str> = Vec::new();
++    let backup_resolver =
++        Resolver::new(ResolverConfig::cloudflare_tls(), ResolverOpts::default()).unwrap();
++
++    for address in &input.addresses {
++        let parsed_ips = parse_address(address, &backup_resolver);
++        if !parsed_ips.is_empty() {
++            ips.extend(parsed_ips);
++        } else {
++            unresolved_addresses.push(address);
++        }
++    }
++
++    // If we got to this point this can only be a file path or the wrong input.
++    for file_path in unresolved_addresses {
++        let file_path = Path::new(file_path);
++
++        if !file_path.is_file() {
++            warning!(
++                format!("Host {file_path:?} could not be resolved."),
++                input.greppable,
++                input.accessible
++            );
++
++            continue;
++        }
++
++        if let Ok(x) = read_ips_from_file(file_path, &backup_resolver) {
++            ips.extend(x);
++        } else {
++            warning!(
++                format!("Host {file_path:?} could not be resolved."),
++                input.greppable,
++                input.accessible
++            );
++        }
++    }
++
++    ips
++}
++
++/// Given a string, parse it as a host, IP address, or CIDR.
++///
++/// This allows us to pass files as hosts or cidr or IPs easily
++/// Call this every time you have a possible IP_or_host
++///
++/// ```rust
++/// # use rustscan::address::parse_address;
++/// # use trust_dns_resolver::Resolver;
++/// let ips = parse_address("127.0.0.1", &Resolver::default().unwrap());
++/// ```
++pub fn parse_address(address: &str, resolver: &Resolver) -> Vec<IpAddr> {
++    IpCidr::from_str(address)
++        .map(|cidr| cidr.iter().collect())
++        .ok()
++        .or_else(|| {
++            format!("{}:{}", &address, 80)
++                .to_socket_addrs()
++                .ok()
++                .map(|mut iter| vec![iter.next().unwrap().ip()])
++        })
++        .unwrap_or_else(|| resolve_ips_from_host(address, resolver))
++}
++
++/// Uses DNS to get the IPS associated with host
++fn resolve_ips_from_host(source: &str, backup_resolver: &Resolver) -> Vec<IpAddr> {
++    let mut ips: Vec<std::net::IpAddr> = Vec::new();
++
++    if let Ok(addrs) = source.to_socket_addrs() {
++        for ip in addrs {
++            ips.push(ip.ip());
++        }
++    } else if let Ok(addrs) = backup_resolver.lookup_ip(source) {
++        ips.extend(addrs.iter());
++    }
++
++    ips
++}
++
++#[cfg(not(tarpaulin_include))]
++/// Parses an input file of IPs and uses those
++fn read_ips_from_file(
++    ips: &std::path::Path,
++    backup_resolver: &Resolver,
++) -> Result<Vec<std::net::IpAddr>, std::io::Error> {
++    let file = File::open(ips)?;
++    let reader = BufReader::new(file);
++
++    let mut ips: Vec<std::net::IpAddr> = Vec::new();
++
++    for address_line in reader.lines() {
++        if let Ok(address) = address_line {
++            ips.extend(parse_address(&address, backup_resolver));
++        } else {
++            debug!("Line in file is not valid");
++        }
++    }
++
++    Ok(ips)
++}
++
++#[cfg(test)]
++mod tests {
++    use super::{parse_addresses, Opts};
++    use std::net::Ipv4Addr;
++
++    #[test]
++    fn parse_correct_addresses() {
++        let mut opts = Opts::default();
++        opts.addresses = vec!["127.0.0.1".to_owned(), "192.168.0.0/30".to_owned()];
++        let ips = parse_addresses(&opts);
++
++        assert_eq!(
++            ips,
++            [
++                Ipv4Addr::new(127, 0, 0, 1),
++                Ipv4Addr::new(192, 168, 0, 0),
++                Ipv4Addr::new(192, 168, 0, 1),
++                Ipv4Addr::new(192, 168, 0, 2),
++                Ipv4Addr::new(192, 168, 0, 3)
++            ]
++        );
++    }
++
++    #[test]
++    fn parse_correct_host_addresses() {
++        let mut opts = Opts::default();
++        opts.addresses = vec!["google.com".to_owned()];
++        let ips = parse_addresses(&opts);
++
++        assert_eq!(ips.len(), 1);
++    }
++
++    #[test]
++    fn parse_correct_and_incorrect_addresses() {
++        let mut opts = Opts::default();
++        opts.addresses = vec!["127.0.0.1".to_owned(), "im_wrong".to_owned()];
++        let ips = parse_addresses(&opts);
++
++        assert_eq!(ips, [Ipv4Addr::new(127, 0, 0, 1),]);
++    }
++
++    #[test]
++    fn parse_incorrect_addresses() {
++        let mut opts = Opts::default();
++        opts.addresses = vec!["im_wrong".to_owned(), "300.10.1.1".to_owned()];
++        let ips = parse_addresses(&opts);
++
++        assert!(ips.is_empty());
++    }
++    #[test]
++    fn parse_hosts_file_and_incorrect_hosts() {
++        // Host file contains IP, Hosts, incorrect IPs, incorrect hosts
++        let mut opts = Opts::default();
++        opts.addresses = vec!["fixtures/hosts.txt".to_owned()];
++        let ips = parse_addresses(&opts);
++        assert_eq!(ips.len(), 3);
++    }
++
++    #[test]
++    fn parse_empty_hosts_file() {
++        // Host file contains IP, Hosts, incorrect IPs, incorrect hosts
++        let mut opts = Opts::default();
++        opts.addresses = vec!["fixtures/empty_hosts.txt".to_owned()];
++        let ips = parse_addresses(&opts);
++        assert_eq!(ips.len(), 0);
++    }
++
++    #[test]
++    fn parse_naughty_host_file() {
++        // Host file contains IP, Hosts, incorrect IPs, incorrect hosts
++        let mut opts = Opts::default();
++        opts.addresses = vec!["fixtures/naughty_string.txt".to_owned()];
++        let ips = parse_addresses(&opts);
++        assert_eq!(ips.len(), 0);
++    }
++}
+diff --git a/src/lib.rs b/src/lib.rs
+index 5aa816c5..4b5e682c 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -51,3 +51,5 @@ pub mod port_strategy;
+ pub mod benchmark;
+ 
+ pub mod scripts;
++
++pub mod address;
+diff --git a/src/main.rs b/src/main.rs
+index 70318315..e37faa65 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -9,20 +9,14 @@ use rustscan::scanner::Scanner;
+ use rustscan::scripts::{init_scripts, Script, ScriptFile};
+ use rustscan::{detail, funny_opening, output, warning};
+ 
+-use cidr_utils::cidr::IpCidr;
+ use colorful::{Color, Colorful};
+ use futures::executor::block_on;
+ use std::collections::HashMap;
+-use std::fs::File;
+-use std::io::{prelude::*, BufReader};
+-use std::net::{IpAddr, ToSocketAddrs};
+-use std::path::Path;
++use std::net::IpAddr;
+ use std::string::ToString;
+ use std::time::Duration;
+-use trust_dns_resolver::{
+-    config::{ResolverConfig, ResolverOpts},
+-    Resolver,
+-};
++
++use rustscan::address::parse_addresses;
+ 
+ extern crate colorful;
+ extern crate dirs;
+@@ -231,104 +225,6 @@ fn print_opening(opts: &Opts) {
+     );
+ }
+ 
+-/// Goes through all possible IP inputs (files or via argparsing)
+-/// Parses the string(s) into IPs
+-fn parse_addresses(input: &Opts) -> Vec<IpAddr> {
+-    let mut ips: Vec<IpAddr> = Vec::new();
+-    let mut unresolved_addresses: Vec<&str> = Vec::new();
+-    let backup_resolver =
+-        Resolver::new(ResolverConfig::cloudflare_tls(), ResolverOpts::default()).unwrap();
+-
+-    for address in &input.addresses {
+-        let parsed_ips = parse_address(address, &backup_resolver);
+-        if !parsed_ips.is_empty() {
+-            ips.extend(parsed_ips);
+-        } else {
+-            unresolved_addresses.push(address);
+-        }
+-    }
+-
+-    // If we got to this point this can only be a file path or the wrong input.
+-    for file_path in unresolved_addresses {
+-        let file_path = Path::new(file_path);
+-
+-        if !file_path.is_file() {
+-            warning!(
+-                format!("Host {file_path:?} could not be resolved."),
+-                input.greppable,
+-                input.accessible
+-            );
+-
+-            continue;
+-        }
+-
+-        if let Ok(x) = read_ips_from_file(file_path, &backup_resolver) {
+-            ips.extend(x);
+-        } else {
+-            warning!(
+-                format!("Host {file_path:?} could not be resolved."),
+-                input.greppable,
+-                input.accessible
+-            );
+-        }
+-    }
+-
+-    ips
+-}
+-
+-/// Given a string, parse it as a host, IP address, or CIDR.
+-/// This allows us to pass files as hosts or cidr or IPs easily
+-/// Call this every time you have a possible IP_or_host
+-fn parse_address(address: &str, resolver: &Resolver) -> Vec<IpAddr> {
+-    IpCidr::from_str(address)
+-        .map(|cidr| cidr.iter().collect())
+-        .ok()
+-        .or_else(|| {
+-            format!("{}:{}", &address, 80)
+-                .to_socket_addrs()
+-                .ok()
+-                .map(|mut iter| vec![iter.next().unwrap().ip()])
+-        })
+-        .unwrap_or_else(|| resolve_ips_from_host(address, resolver))
+-}
+-
+-/// Uses DNS to get the IPS associated with host
+-fn resolve_ips_from_host(source: &str, backup_resolver: &Resolver) -> Vec<IpAddr> {
+-    let mut ips: Vec<std::net::IpAddr> = Vec::new();
+-
+-    if let Ok(addrs) = source.to_socket_addrs() {
+-        for ip in addrs {
+-            ips.push(ip.ip());
+-        }
+-    } else if let Ok(addrs) = backup_resolver.lookup_ip(source) {
+-        ips.extend(addrs.iter());
+-    }
+-
+-    ips
+-}
+-
+-#[cfg(not(tarpaulin_include))]
+-/// Parses an input file of IPs and uses those
+-fn read_ips_from_file(
+-    ips: &std::path::Path,
+-    backup_resolver: &Resolver,
+-) -> Result<Vec<std::net::IpAddr>, std::io::Error> {
+-    let file = File::open(ips)?;
+-    let reader = BufReader::new(file);
+-
+-    let mut ips: Vec<std::net::IpAddr> = Vec::new();
+-
+-    for address_line in reader.lines() {
+-        if let Ok(address) = address_line {
+-            ips.extend(parse_address(&address, backup_resolver));
+-        } else {
+-            debug!("Line in file is not valid");
+-        }
+-    }
+-
+-    Ok(ips)
+-}
+-
+ #[cfg(unix)]
+ fn adjust_ulimit_size(opts: &Opts) -> u64 {
+     use rlimit::Resource;
+@@ -398,8 +294,7 @@ fn infer_batch_size(opts: &Opts, ulimit: u64) -> u16 {
+ mod tests {
+     #[cfg(unix)]
+     use super::{adjust_ulimit_size, infer_batch_size};
+-    use super::{parse_addresses, print_opening, Opts};
+-    use std::net::Ipv4Addr;
++    use super::{print_opening, Opts};
+ 
+     #[test]
+     #[cfg(unix)]
+@@ -442,13 +337,6 @@ mod tests {
+ 
+         assert!(batch_size == 2_000);
+     }
+-    #[test]
+-    fn test_print_opening_no_panic() {
+-        let mut opts = Opts::default();
+-        opts.ulimit = Some(2_000);
+-        // print opening should not panic
+-        print_opening(&opts);
+-    }
+ 
+     #[test]
+     #[cfg(unix)]
+@@ -463,73 +351,10 @@ mod tests {
+     }
+ 
+     #[test]
+-    fn parse_correct_addresses() {
+-        let mut opts = Opts::default();
+-        opts.addresses = vec!["127.0.0.1".to_owned(), "192.168.0.0/30".to_owned()];
+-        let ips = parse_addresses(&opts);
+-
+-        assert_eq!(
+-            ips,
+-            [
+-                Ipv4Addr::new(127, 0, 0, 1),
+-                Ipv4Addr::new(192, 168, 0, 0),
+-                Ipv4Addr::new(192, 168, 0, 1),
+-                Ipv4Addr::new(192, 168, 0, 2),
+-                Ipv4Addr::new(192, 168, 0, 3)
+-            ]
+-        );
+-    }
+-
+-    #[test]
+-    fn parse_correct_host_addresses() {
+-        let mut opts = Opts::default();
+-        opts.addresses = vec!["google.com".to_owned()];
+-        let ips = parse_addresses(&opts);
+-
+-        assert_eq!(ips.len(), 1);
+-    }
+-
+-    #[test]
+-    fn parse_correct_and_incorrect_addresses() {
+-        let mut opts = Opts::default();
+-        opts.addresses = vec!["127.0.0.1".to_owned(), "im_wrong".to_owned()];
+-        let ips = parse_addresses(&opts);
+-
+-        assert_eq!(ips, [Ipv4Addr::new(127, 0, 0, 1),]);
+-    }
+-
+-    #[test]
+-    fn parse_incorrect_addresses() {
+-        let mut opts = Opts::default();
+-        opts.addresses = vec!["im_wrong".to_owned(), "300.10.1.1".to_owned()];
+-        let ips = parse_addresses(&opts);
+-
+-        assert!(ips.is_empty());
+-    }
+-    #[test]
+-    fn parse_hosts_file_and_incorrect_hosts() {
+-        // Host file contains IP, Hosts, incorrect IPs, incorrect hosts
+-        let mut opts = Opts::default();
+-        opts.addresses = vec!["fixtures/hosts.txt".to_owned()];
+-        let ips = parse_addresses(&opts);
+-        assert_eq!(ips.len(), 3);
+-    }
+-
+-    #[test]
+-    fn parse_empty_hosts_file() {
+-        // Host file contains IP, Hosts, incorrect IPs, incorrect hosts
+-        let mut opts = Opts::default();
+-        opts.addresses = vec!["fixtures/empty_hosts.txt".to_owned()];
+-        let ips = parse_addresses(&opts);
+-        assert_eq!(ips.len(), 0);
+-    }
+-
+-    #[test]
+-    fn parse_naughty_host_file() {
+-        // Host file contains IP, Hosts, incorrect IPs, incorrect hosts
++    fn test_print_opening_no_panic() {
+         let mut opts = Opts::default();
+-        opts.addresses = vec!["fixtures/naughty_string.txt".to_owned()];
+-        let ips = parse_addresses(&opts);
+-        assert_eq!(ips.len(), 0);
++        opts.ulimit = Some(2_000);
++        // print opening should not panic
++        print_opening(&opts);
+     }
+ }
+
+From 4ae4853e1d2771022215b3408c264bbfc2b984e9 Mon Sep 17 00:00:00 2001
+From: "Roger G. Coram" <psypherpunk@gmail.com>
+Date: Fri, 10 May 2024 16:14:16 +0100
+Subject: [PATCH 04/18]  feat(cli): add custom dns resolver option (#587)
+
+* feat(cli): add custom dns resolver option
+
+* fix: correct clippy lints
+
+* refactor: update resolvers to be Option
+
+use an `Option<String>` rather than a `String`, defaulting to `""`.
+
+* feat(cli): include resolver in config.
+
+* refactor: change resolver chain
+
+- remove extraneous `std::net::` prefixes for already-imported `IpAddr`.
+- move derivation to a function:
+  - parse input/file as normal;
+  - attempt to use the system DNS resolution;
+  - fall back to previous CloudFlare behaviour.
+
+---------
+
+Co-authored-by: Khanh Nguyen <nguyentrungkhanh97@gmail.com>
+---
+ Cargo.lock     | 111 +++++++++++++++++++++++--------------------------
+ Cargo.toml     |   2 +-
+ src/address.rs | 100 ++++++++++++++++++++++++++++++++++++++------
+ src/input.rs   |  11 ++++-
+ 4 files changed, 149 insertions(+), 75 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 83df422a..b9021751 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -783,6 +783,56 @@ version = "0.3.9"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "d231dfb89cfffdbc30e7fc41579ed6066ad03abda9e567ccafae602b97ec5024"
+ 
++[[package]]
++name = "hickory-proto"
++version = "0.24.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "07698b8420e2f0d6447a436ba999ec85d8fbf2a398bbd737b82cac4a2e96e512"
++dependencies = [
++ "async-trait",
++ "cfg-if",
++ "data-encoding",
++ "enum-as-inner",
++ "futures-channel",
++ "futures-io",
++ "futures-util",
++ "idna 0.4.0",
++ "ipnet",
++ "once_cell",
++ "rand 0.8.5",
++ "rustls",
++ "rustls-pemfile",
++ "thiserror",
++ "tinyvec",
++ "tokio",
++ "tokio-rustls",
++ "tracing",
++ "url",
++]
++
++[[package]]
++name = "hickory-resolver"
++version = "0.24.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "28757f23aa75c98f254cf0405e6d8c25b831b32921b050a66692427679b1f243"
++dependencies = [
++ "cfg-if",
++ "futures-util",
++ "hickory-proto",
++ "ipconfig",
++ "lru-cache",
++ "once_cell",
++ "parking_lot",
++ "rand 0.8.5",
++ "resolv-conf",
++ "rustls",
++ "smallvec",
++ "thiserror",
++ "tokio",
++ "tokio-rustls",
++ "tracing",
++]
++
+ [[package]]
+ name = "hostname"
+ version = "0.3.1"
+@@ -1430,6 +1480,7 @@ dependencies = [
+  "env_logger",
+  "futures",
+  "gcd",
++ "hickory-resolver",
+  "itertools",
+  "log",
+  "rand 0.7.3",
+@@ -1440,7 +1491,6 @@ dependencies = [
+  "subprocess",
+  "text_placeholder",
+  "toml",
+- "trust-dns-resolver",
+  "wait-timeout",
+ ]
+ 
+@@ -1755,59 +1805,6 @@ dependencies = [
+  "once_cell",
+ ]
+ 
+-[[package]]
+-name = "trust-dns-proto"
+-version = "0.23.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3119112651c157f4488931a01e586aa459736e9d6046d3bd9105ffb69352d374"
+-dependencies = [
+- "async-trait",
+- "cfg-if",
+- "data-encoding",
+- "enum-as-inner",
+- "futures-channel",
+- "futures-io",
+- "futures-util",
+- "idna 0.4.0",
+- "ipnet",
+- "once_cell",
+- "rand 0.8.5",
+- "rustls",
+- "rustls-pemfile",
+- "rustls-webpki",
+- "smallvec",
+- "thiserror",
+- "tinyvec",
+- "tokio",
+- "tokio-rustls",
+- "tracing",
+- "url",
+-]
+-
+-[[package]]
+-name = "trust-dns-resolver"
+-version = "0.23.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "10a3e6c3aff1718b3c73e395d1f35202ba2ffa847c6a62eea0db8fb4cfe30be6"
+-dependencies = [
+- "cfg-if",
+- "futures-util",
+- "ipconfig",
+- "lru-cache",
+- "once_cell",
+- "parking_lot",
+- "rand 0.8.5",
+- "resolv-conf",
+- "rustls",
+- "smallvec",
+- "thiserror",
+- "tokio",
+- "tokio-rustls",
+- "tracing",
+- "trust-dns-proto",
+- "webpki-roots",
+-]
+-
+ [[package]]
+ name = "unicode-bidi"
+ version = "0.3.15"
+@@ -1985,12 +1982,6 @@ dependencies = [
+  "wasm-bindgen",
+ ]
+ 
+-[[package]]
+-name = "webpki-roots"
+-version = "0.25.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5f20c57d8d7db6d3b86154206ae5d8fba62dd39573114de97c2cb0578251f8e1"
+-
+ [[package]]
+ name = "widestring"
+ version = "1.1.0"
+diff --git a/Cargo.toml b/Cargo.toml
+index 090a0d7a..08dc6fcd 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -34,7 +34,7 @@ serde = "1.0.124"
+ serde_derive = "1.0.116"
+ cidr-utils = "0.5.1"
+ itertools = "0.9.0"
+-trust-dns-resolver = { version = "0.23.2", features = ["dns-over-rustls"] }
++hickory-resolver = { version = "0.24.0", features = ["dns-over-rustls"] }
+ anyhow = "1.0.40"
+ subprocess = "0.2.6"
+ text_placeholder = { version = "0.5", features = ["struct_context"] }
+diff --git a/src/address.rs b/src/address.rs
+index 550b8090..4bce3a4c 100644
+--- a/src/address.rs
++++ b/src/address.rs
+@@ -1,15 +1,16 @@
+ //! Provides functions to parse input IP addresses, CIDRs or files.
+-use std::fs::File;
++use std::fs::{self, File};
+ use std::io::{prelude::*, BufReader};
+-use std::net::{IpAddr, ToSocketAddrs};
++use std::net::{IpAddr, SocketAddr, ToSocketAddrs};
+ use std::path::Path;
++use std::str::FromStr;
+ 
+ use cidr_utils::cidr::IpCidr;
+-use log::debug;
+-use trust_dns_resolver::{
+-    config::{ResolverConfig, ResolverOpts},
++use hickory_resolver::{
++    config::{NameServerConfig, Protocol, ResolverConfig, ResolverOpts},
+     Resolver,
+ };
++use log::debug;
+ 
+ use crate::input::Opts;
+ use crate::warning;
+@@ -29,8 +30,7 @@ use crate::warning;
+ pub fn parse_addresses(input: &Opts) -> Vec<IpAddr> {
+     let mut ips: Vec<IpAddr> = Vec::new();
+     let mut unresolved_addresses: Vec<&str> = Vec::new();
+-    let backup_resolver =
+-        Resolver::new(ResolverConfig::cloudflare_tls(), ResolverOpts::default()).unwrap();
++    let backup_resolver = get_resolver(&input.resolver);
+ 
+     for address in &input.addresses {
+         let parsed_ips = parse_address(address, &backup_resolver);
+@@ -72,11 +72,14 @@ pub fn parse_addresses(input: &Opts) -> Vec<IpAddr> {
+ /// Given a string, parse it as a host, IP address, or CIDR.
+ ///
+ /// This allows us to pass files as hosts or cidr or IPs easily
+-/// Call this every time you have a possible IP_or_host
++/// Call this every time you have a possible IP-or-host.
++///
++/// If the address is a domain, we can self-resolve the domain locally
++/// or resolve it by dns resolver list.
+ ///
+ /// ```rust
+ /// # use rustscan::address::parse_address;
+-/// # use trust_dns_resolver::Resolver;
++/// # use hickory_resolver::Resolver;
+ /// let ips = parse_address("127.0.0.1", &Resolver::default().unwrap());
+ /// ```
+ pub fn parse_address(address: &str, resolver: &Resolver) -> Vec<IpAddr> {
+@@ -94,7 +97,7 @@ pub fn parse_address(address: &str, resolver: &Resolver) -> Vec<IpAddr> {
+ 
+ /// Uses DNS to get the IPS associated with host
+ fn resolve_ips_from_host(source: &str, backup_resolver: &Resolver) -> Vec<IpAddr> {
+-    let mut ips: Vec<std::net::IpAddr> = Vec::new();
++    let mut ips: Vec<IpAddr> = Vec::new();
+ 
+     if let Ok(addrs) = source.to_socket_addrs() {
+         for ip in addrs {
+@@ -107,16 +110,64 @@ fn resolve_ips_from_host(source: &str, backup_resolver: &Resolver) -> Vec<IpAddr
+     ips
+ }
+ 
++/// Derive a DNS resolver.
++///
++/// 1. if the `resolver` parameter has been set:
++///     1. assume the parameter is a path and attempt to read IPs.
++///     2. parse the input as a comma-separated list of IPs.
++/// 2. if `resolver` is not set:
++///    1. attempt to derive a resolver from the system config. (e.g.
++///       `/etc/resolv.conf` on *nix).
++///    2. finally, build a CloudFlare-based resolver (default
++///       behaviour).
++fn get_resolver(resolver: &Option<String>) -> Resolver {
++    match resolver {
++        Some(r) => {
++            let mut config = ResolverConfig::new();
++            let resolver_ips = match read_resolver_from_file(r) {
++                Ok(ips) => ips,
++                Err(_) => r
++                    .split(',')
++                    .filter_map(|r| IpAddr::from_str(r).ok())
++                    .collect::<Vec<_>>(),
++            };
++            for ip in resolver_ips {
++                config.add_name_server(NameServerConfig::new(
++                    SocketAddr::new(ip, 53),
++                    Protocol::Udp,
++                ));
++            }
++            Resolver::new(config, ResolverOpts::default()).unwrap()
++        }
++        None => match Resolver::from_system_conf() {
++            Ok(resolver) => resolver,
++            Err(_) => {
++                Resolver::new(ResolverConfig::cloudflare_tls(), ResolverOpts::default()).unwrap()
++            }
++        },
++    }
++}
++
++/// Parses and input file of IPs for use in DNS resolution.
++fn read_resolver_from_file(path: &str) -> Result<Vec<IpAddr>, std::io::Error> {
++    let ips = fs::read_to_string(path)?
++        .lines()
++        .filter_map(|line| IpAddr::from_str(line.trim()).ok())
++        .collect();
++
++    Ok(ips)
++}
++
+ #[cfg(not(tarpaulin_include))]
+ /// Parses an input file of IPs and uses those
+ fn read_ips_from_file(
+     ips: &std::path::Path,
+     backup_resolver: &Resolver,
+-) -> Result<Vec<std::net::IpAddr>, std::io::Error> {
++) -> Result<Vec<IpAddr>, std::io::Error> {
+     let file = File::open(ips)?;
+     let reader = BufReader::new(file);
+ 
+-    let mut ips: Vec<std::net::IpAddr> = Vec::new();
++    let mut ips: Vec<IpAddr> = Vec::new();
+ 
+     for address_line in reader.lines() {
+         if let Ok(address) = address_line {
+@@ -131,7 +182,7 @@ fn read_ips_from_file(
+ 
+ #[cfg(test)]
+ mod tests {
+-    use super::{parse_addresses, Opts};
++    use super::{get_resolver, parse_addresses, Opts};
+     use std::net::Ipv4Addr;
+ 
+     #[test]
+@@ -204,4 +255,27 @@ mod tests {
+         let ips = parse_addresses(&opts);
+         assert_eq!(ips.len(), 0);
+     }
++
++    #[test]
++    fn resolver_default_cloudflare() {
++        let opts = Opts::default();
++
++        let resolver = get_resolver(&opts.resolver);
++        let lookup = resolver.lookup_ip("www.example.com.").unwrap();
++
++        assert!(opts.resolver.is_none());
++        assert!(lookup.iter().next().is_some());
++    }
++
++    #[test]
++    fn resolver_args_google_dns() {
++        let mut opts = Opts::default();
++        // https://developers.google.com/speed/public-dns
++        opts.resolver = Some("8.8.8.8,8.8.4.4".to_owned());
++
++        let resolver = get_resolver(&opts.resolver);
++        let lookup = resolver.lookup_ip("www.example.com.").unwrap();
++
++        assert!(lookup.iter().next().is_some());
++    }
+ }
+diff --git a/src/input.rs b/src/input.rs
+index 8028f13f..08fbed89 100644
+--- a/src/input.rs
++++ b/src/input.rs
+@@ -100,6 +100,10 @@ pub struct Opts {
+     #[structopt(long)]
+     pub accessible: bool,
+ 
++    /// A comma-delimited list or file of DNS resolvers.
++    #[structopt(long)]
++    pub resolver: Option<String>,
++
+     /// The batch size for port scanning, it increases or slows the speed of
+     /// scanning. Depends on the open file limit of your OS.  If you do 65535
+     /// it will do every port at the same time. Although, your OS may not
+@@ -208,7 +212,7 @@ impl Opts {
+             self.ports = Some(ports);
+         }
+ 
+-        merge_optional!(range, ulimit, exclude_ports);
++        merge_optional!(range, resolver, ulimit, exclude_ports);
+     }
+ }
+ 
+@@ -225,6 +229,7 @@ impl Default for Opts {
+             ulimit: None,
+             command: vec![],
+             accessible: false,
++            resolver: None,
+             scan_order: ScanOrder::Serial,
+             no_config: true,
+             top: false,
+@@ -250,6 +255,7 @@ pub struct Config {
+     timeout: Option<u32>,
+     tries: Option<u8>,
+     ulimit: Option<u64>,
++    resolver: Option<String>,
+     scan_order: Option<ScanOrder>,
+     command: Option<Vec<String>>,
+     scripts: Option<ScriptsRequired>,
+@@ -317,6 +323,7 @@ mod tests {
+                 ulimit: None,
+                 command: Some(vec!["-A".to_owned()]),
+                 accessible: Some(true),
++                resolver: None,
+                 scan_order: Some(ScanOrder::Random),
+                 scripts: None,
+                 exclude_ports: None,
+@@ -364,10 +371,12 @@ mod tests {
+             end: 1_000,
+         });
+         config.ulimit = Some(1_000);
++        config.resolver = Some("1.1.1.1".to_owned());
+ 
+         opts.merge_optional(&config);
+ 
+         assert_eq!(opts.range, config.range);
+         assert_eq!(opts.ulimit, config.ulimit);
++        assert_eq!(opts.resolver, config.resolver);
+     }
+ }
+
+From 457c1643ffde9e83890d1f77f9c548929c3ab5dd Mon Sep 17 00:00:00 2001
+From: "Roger G. Coram" <psypherpunk@gmail.com>
+Date: Wed, 15 May 2024 07:16:22 +0100
+Subject: [PATCH 05/18] chore: upgrade dependencies (#590)
+
+- move to the latest versions of direct dependencies.
+  - update `rand` usage to use `Range` types.
+  - update `cidr_utils` to reflect underlying `cidr` crate.
+---
+ Cargo.lock                          | 125 ++++++++--------------------
+ Cargo.toml                          |  10 +--
+ src/address.rs                      |   2 +-
+ src/port_strategy/range_iterator.rs |   6 +-
+ 4 files changed, 45 insertions(+), 98 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index b9021751..423470b1 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -349,17 +349,21 @@ version = "1.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+ 
++[[package]]
++name = "cidr"
++version = "0.2.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8d18b093eba54c9aaa1e3784d4361eb2ba944cf7d0a932a830132238f483e8d8"
++
+ [[package]]
+ name = "cidr-utils"
+-version = "0.5.11"
++version = "0.6.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "2315f7119b7146d6a883de6acd63ddf96071b5f79d9d98d2adaa84d749f6abf1"
++checksum = "25c0a9fb70c2c2cc2a520aa259b1d1345650046a07df1b6da1d3cefcd327f43e"
+ dependencies = [
+- "debug-helper",
++ "cidr",
+  "num-bigint",
+  "num-traits",
+- "once_cell",
+- "regex",
+ ]
+ 
+ [[package]]
+@@ -420,30 +424,25 @@ version = "2.6.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e8566979429cf69b49a5c740c60791108e86440e8be149bbea4fe54d2c32d6e2"
+ 
+-[[package]]
+-name = "debug-helper"
+-version = "0.3.13"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f578e8e2c440e7297e008bb5486a3a8a194775224bbc23729b0dbdfaeebf162e"
+-
+ [[package]]
+ name = "dirs"
+-version = "3.0.2"
++version = "5.0.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "30baa043103c9d0c2a57cf537cc2f35623889dc0d405e6c3cccfadbc81c71309"
++checksum = "44c45a9d03d6676652bcb5e724c7e988de1acad23a711b5217ab9cbecbec2225"
+ dependencies = [
+  "dirs-sys",
+ ]
+ 
+ [[package]]
+ name = "dirs-sys"
+-version = "0.3.7"
++version = "0.4.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1b1d1d91c932ef41c0f2663aa8b0ca0342d444d842c06914aa0a7e352d0bada6"
++checksum = "520f05a5cbd335fae5a99ff7a6ab8627577660ee5cfd6a94a6a929b52ff0321c"
+ dependencies = [
+  "libc",
++ "option-ext",
+  "redox_users",
+- "winapi",
++ "windows-sys 0.48.0",
+ ]
+ 
+ [[package]]
+@@ -698,17 +697,6 @@ version = "2.3.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "1d758ba1b47b00caf47f24925c0074ecb20d6dfcffe7f6d53395c0465674841a"
+ 
+-[[package]]
+-name = "getrandom"
+-version = "0.1.16"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8fc3cb4d91f53b50155bdcfd23f6a4c39ae1969c2ae85982b135750cccaf5fce"
+-dependencies = [
+- "cfg-if",
+- "libc",
+- "wasi 0.9.0+wasi-snapshot-preview1",
+-]
+-
+ [[package]]
+ name = "getrandom"
+ version = "0.2.14"
+@@ -717,7 +705,7 @@ checksum = "94b22e06ecb0110981051723910cbf0b5f5e09a2062dd7663334ee79a9d1286c"
+ dependencies = [
+  "cfg-if",
+  "libc",
+- "wasi 0.11.0+wasi-snapshot-preview1",
++ "wasi",
+ ]
+ 
+ [[package]]
+@@ -799,7 +787,7 @@ dependencies = [
+  "idna 0.4.0",
+  "ipnet",
+  "once_cell",
+- "rand 0.8.5",
++ "rand",
+  "rustls",
+  "rustls-pemfile",
+  "thiserror",
+@@ -823,7 +811,7 @@ dependencies = [
+  "lru-cache",
+  "once_cell",
+  "parking_lot",
+- "rand 0.8.5",
++ "rand",
+  "resolv-conf",
+  "rustls",
+  "smallvec",
+@@ -920,9 +908,9 @@ checksum = "8f518f335dce6725a761382244631d86cf0ccb2863413590b31338feb467f9c3"
+ 
+ [[package]]
+ name = "itertools"
+-version = "0.9.0"
++version = "0.12.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "284f18f85651fe11e8a991b2adb42cb078325c996ed026d994719efcfca1d54b"
++checksum = "ba291022dbbd398a455acf126c1e341954079855bc60dfdda641363bd6922569"
+ dependencies = [
+  "either",
+ ]
+@@ -1047,7 +1035,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "a4a650543ca06a924e8b371db273b2756685faae30f8487da1b56505a8f78b0c"
+ dependencies = [
+  "libc",
+- "wasi 0.11.0+wasi-snapshot-preview1",
++ "wasi",
+  "windows-sys 0.48.0",
+ ]
+ 
+@@ -1105,6 +1093,12 @@ version = "1.19.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92"
+ 
++[[package]]
++name = "option-ext"
++version = "0.2.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
++
+ [[package]]
+ name = "parking"
+ version = "2.2.0"
+@@ -1248,19 +1242,6 @@ dependencies = [
+  "proc-macro2",
+ ]
+ 
+-[[package]]
+-name = "rand"
+-version = "0.7.3"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "6a6b1679d49b24bbfe0c803429aa1874472f50d9b363131f0e89fc356b544d03"
+-dependencies = [
+- "getrandom 0.1.16",
+- "libc",
+- "rand_chacha 0.2.2",
+- "rand_core 0.5.1",
+- "rand_hc",
+-]
+-
+ [[package]]
+ name = "rand"
+ version = "0.8.5"
+@@ -1268,18 +1249,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "34af8d1a0e25924bc5b7c43c079c942339d8f0a8b57c39049bef581b46327404"
+ dependencies = [
+  "libc",
+- "rand_chacha 0.3.1",
+- "rand_core 0.6.4",
+-]
+-
+-[[package]]
+-name = "rand_chacha"
+-version = "0.2.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f4c8ed856279c9737206bf725bf36935d8666ead7aa69b52be55af369d193402"
+-dependencies = [
+- "ppv-lite86",
+- "rand_core 0.5.1",
++ "rand_chacha",
++ "rand_core",
+ ]
+ 
+ [[package]]
+@@ -1289,16 +1260,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e6c10a63a0fa32252be49d21e7709d4d4baf8d231c2dbce1eaa8141b9b127d88"
+ dependencies = [
+  "ppv-lite86",
+- "rand_core 0.6.4",
+-]
+-
+-[[package]]
+-name = "rand_core"
+-version = "0.5.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "90bde5296fc891b0cef12a6d03ddccc162ce7b2aff54160af9338f8d40df6d19"
+-dependencies = [
+- "getrandom 0.1.16",
++ "rand_core",
+ ]
+ 
+ [[package]]
+@@ -1307,16 +1269,7 @@ version = "0.6.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
+ dependencies = [
+- "getrandom 0.2.14",
+-]
+-
+-[[package]]
+-name = "rand_hc"
+-version = "0.2.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ca3129af7b92a17112d59ad498c6f81eaf463253766b90396d39ea7a39d6613c"
+-dependencies = [
+- "rand_core 0.5.1",
++ "getrandom",
+ ]
+ 
+ [[package]]
+@@ -1334,7 +1287,7 @@ version = "0.4.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "bd283d9651eeda4b2a83a43c1c91b266c40fd76ecd39a50a8c630ae69dc72891"
+ dependencies = [
+- "getrandom 0.2.14",
++ "getrandom",
+  "libredox",
+  "thiserror",
+ ]
+@@ -1386,7 +1339,7 @@ checksum = "c17fa4cb658e3583423e915b9f3acc01cceaee1860e33d59ebae66adc3a2dc0d"
+ dependencies = [
+  "cc",
+  "cfg-if",
+- "getrandom 0.2.14",
++ "getrandom",
+  "libc",
+  "spin",
+  "untrusted",
+@@ -1395,9 +1348,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "rlimit"
+-version = "0.8.3"
++version = "0.10.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f7278a1ec8bfd4a4e07515c589f5ff7b309a373f987393aef44813d9dcf87aa3"
++checksum = "3560f70f30a0f16d11d01ed078a07740fe6b489667abc7c7b029155d9f21c3d8"
+ dependencies = [
+  "libc",
+ ]
+@@ -1483,7 +1436,7 @@ dependencies = [
+  "hickory-resolver",
+  "itertools",
+  "log",
+- "rand 0.7.3",
++ "rand",
+  "rlimit",
+  "serde",
+  "serde_derive",
+@@ -1894,12 +1847,6 @@ version = "1.1.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "f3c4517f54858c779bbcbf228f4fca63d121bf85fbecb2dc578cdf4a39395690"
+ 
+-[[package]]
+-name = "wasi"
+-version = "0.9.0+wasi-snapshot-preview1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "cccddf32554fecc6acb585f82a32a72e28b48f8c4c1883ddfeeeaa96f7d8e519"
+-
+ [[package]]
+ name = "wasi"
+ version = "0.11.0+wasi-snapshot-preview1"
+diff --git a/Cargo.toml b/Cargo.toml
+index 08dc6fcd..52c68fc7 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -21,19 +21,19 @@ colored = "2.1.0"
+ structopt = "0.3.20"
+ async-std = "1.7.0"
+ futures = "0.3"
+-rlimit = "0.8.3"
++rlimit = "0.10.1"
+ log = "0.4.0"
+ env_logger = "0.11.3"
+-dirs = "3.0.1"
++dirs = "5.0.1"
+ gcd = "2.0.1"
+-rand = "0.7.3"
++rand = "0.8.5"
+ colorful = "0.2.1"
+ ansi_term = "0.12.1"
+ toml = "0.8.12"
+ serde = "1.0.124"
+ serde_derive = "1.0.116"
+-cidr-utils = "0.5.1"
+-itertools = "0.9.0"
++cidr-utils = "0.6.1"
++itertools = "0.12.1"
+ hickory-resolver = { version = "0.24.0", features = ["dns-over-rustls"] }
+ anyhow = "1.0.40"
+ subprocess = "0.2.6"
+diff --git a/src/address.rs b/src/address.rs
+index 4bce3a4c..762f8654 100644
+--- a/src/address.rs
++++ b/src/address.rs
+@@ -84,7 +84,7 @@ pub fn parse_addresses(input: &Opts) -> Vec<IpAddr> {
+ /// ```
+ pub fn parse_address(address: &str, resolver: &Resolver) -> Vec<IpAddr> {
+     IpCidr::from_str(address)
+-        .map(|cidr| cidr.iter().collect())
++        .map(|cidr| cidr.iter().map(|c| c.address()).collect())
+         .ok()
+         .or_else(|| {
+             format!("{}:{}", &address, 80)
+diff --git a/src/port_strategy/range_iterator.rs b/src/port_strategy/range_iterator.rs
+index 5eb06c0a..df95d8d4 100644
+--- a/src/port_strategy/range_iterator.rs
++++ b/src/port_strategy/range_iterator.rs
+@@ -28,7 +28,7 @@ impl RangeIterator {
+         // Randomly choose a number within the range to be the first
+         // and assign it as a pick.
+         let mut rng = rand::thread_rng();
+-        let normalized_first_pick = rng.gen_range(0, normalized_end);
++        let normalized_first_pick = rng.gen_range(0..normalized_end);
+ 
+         Self {
+             active: true,
+@@ -84,13 +84,13 @@ fn pick_random_coprime(end: u32) -> u32 {
+     let lower_range = range_boundary;
+     let upper_range = end - range_boundary;
+     let mut rng = rand::thread_rng();
+-    let mut candidate = rng.gen_range(lower_range, upper_range);
++    let mut candidate = rng.gen_range(lower_range..upper_range);
+ 
+     for _ in 0..10 {
+         if end.gcd(candidate) == 1 {
+             return candidate;
+         }
+-        candidate = rng.gen_range(lower_range, upper_range);
++        candidate = rng.gen_range(lower_range..upper_range);
+     }
+ 
+     end - 1
+
+From 8bfb643796c25c73c1913b57753ba2f6bd9a9d6e Mon Sep 17 00:00:00 2001
+From: "Roger G. Coram" <psypherpunk@gmail.com>
+Date: Sat, 18 May 2024 14:47:10 +0100
+Subject: [PATCH 06/18] refactor: remove structopt in favour of clap (#591)
+
+* refactor: remove structopt in favour of clap
+
+as per
+[`structopt` README](https://github.com/TeXitoi/structopt#maintenance),
+it is now in maintenance mode.
+
+migrating to `clap` v3 as per their
+[migration docs.](https://github.com/clap-rs/clap/blob/master/CHANGELOG.md#300---2021-12-31).
+
+* refactor: upgrade clap to v4
+
+implement `clap` breaking changes as per docs.
+
+* test: add parameterized tests for nmap-command parsing
+---
+ Cargo.lock   | 231 ++++++++++++++++++++++-----------------------------
+ Cargo.toml   |   3 +-
+ src/input.rs | 112 ++++++++++++++++---------
+ 3 files changed, 171 insertions(+), 175 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 423470b1..bade2211 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -252,7 +252,7 @@ checksum = "c6fa2087f2753a7da8cc1c0dbfcf89579dd57458e36769de5ac750b4671737ca"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+ ]
+ 
+ [[package]]
+@@ -261,17 +261,6 @@ version = "1.1.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
+ 
+-[[package]]
+-name = "atty"
+-version = "0.2.14"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d9b39be18770d11421cdb1b9947a45dd3f37e93092cbf377614828a319d5fee8"
+-dependencies = [
+- "hermit-abi 0.1.19",
+- "libc",
+- "winapi",
+-]
+-
+ [[package]]
+ name = "autocfg"
+ version = "1.2.0"
+@@ -368,19 +357,45 @@ dependencies = [
+ 
+ [[package]]
+ name = "clap"
+-version = "2.34.0"
++version = "4.5.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a0610544180c38b88101fecf2dd634b174a62eef6946f84dfc6a7127512b381c"
++checksum = "90bc066a67923782aa8515dbaea16946c5bcc5addbd668bb80af688e53e548a0"
+ dependencies = [
+- "ansi_term",
+- "atty",
+- "bitflags 1.3.2",
++ "clap_builder",
++ "clap_derive",
++]
++
++[[package]]
++name = "clap_builder"
++version = "4.5.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ae129e2e766ae0ec03484e609954119f123cc1fe650337e155d03b022f24f7b4"
++dependencies = [
++ "anstream",
++ "anstyle",
++ "clap_lex",
+  "strsim",
+- "textwrap",
+- "unicode-width",
+- "vec_map",
++ "terminal_size",
++]
++
++[[package]]
++name = "clap_derive"
++version = "4.5.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "528131438037fd55894f62d6e9f068b8f45ac57ffa77517819645d10aed04f64"
++dependencies = [
++ "heck 0.5.0",
++ "proc-macro2",
++ "quote",
++ "syn",
+ ]
+ 
++[[package]]
++name = "clap_lex"
++version = "0.7.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "98cc8fbded0c607b7ba9dd60cd98df59af97e84d24e49c8557331cfc26d301ce"
++
+ [[package]]
+ name = "colorchoice"
+ version = "1.0.0"
+@@ -460,7 +475,7 @@ dependencies = [
+  "heck 0.4.1",
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+ ]
+ 
+ [[package]]
+@@ -658,7 +673,7 @@ checksum = "87750cf4b7a4c0625b1529e4c543c2182106e4dedc60a2a6455e00d212c489ac"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+ ]
+ 
+ [[package]]
+@@ -726,6 +741,12 @@ dependencies = [
+  "wasm-bindgen",
+ ]
+ 
++[[package]]
++name = "hashbrown"
++version = "0.12.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
++
+ [[package]]
+ name = "hashbrown"
+ version = "0.13.2"
+@@ -741,15 +762,6 @@ version = "0.14.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e5274423e17b7c9fc20b6e7e208532f9b19825d82dfd615708b70edd83df41f1"
+ 
+-[[package]]
+-name = "heck"
+-version = "0.3.3"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "6d621efb26863f0e9924c6ac577e8275e5e6b77455db64ffa6c65c904e9e132c"
+-dependencies = [
+- "unicode-segmentation",
+-]
+-
+ [[package]]
+ name = "heck"
+ version = "0.4.1"
+@@ -757,13 +769,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
+ 
+ [[package]]
+-name = "hermit-abi"
+-version = "0.1.19"
++name = "heck"
++version = "0.5.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33"
+-dependencies = [
+- "libc",
+-]
++checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
+ 
+ [[package]]
+ name = "hermit-abi"
+@@ -858,6 +867,16 @@ dependencies = [
+  "unicode-normalization",
+ ]
+ 
++[[package]]
++name = "indexmap"
++version = "1.9.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "bd070e393353796e801d209ad339e89596eb4c8d430d18ede6a1cced8fafbd99"
++dependencies = [
++ "autocfg",
++ "hashbrown 0.12.3",
++]
++
+ [[package]]
+ name = "indexmap"
+ version = "2.2.6"
+@@ -883,7 +902,7 @@ version = "1.0.11"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "eae7b9aee968036d54dce06cebaefd919e4472e753296daccd6d344e3e2df0c2"
+ dependencies = [
+- "hermit-abi 0.3.9",
++ "hermit-abi",
+  "libc",
+  "windows-sys 0.48.0",
+ ]
+@@ -1074,7 +1093,7 @@ version = "1.16.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "4161fcb6d602d4d2081af7c3a45852d875a03dd337a6bfdd6e06407b61342a43"
+ dependencies = [
+- "hermit-abi 0.3.9",
++ "hermit-abi",
+  "libc",
+ ]
+ 
+@@ -1099,6 +1118,27 @@ version = "0.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
+ 
++[[package]]
++name = "parameterized"
++version = "2.0.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "194bf497674dda552d4f1bd24d325f828f425876c9d522fcb1810cd527e0bd4e"
++dependencies = [
++ "parameterized-macro",
++]
++
++[[package]]
++name = "parameterized-macro"
++version = "2.0.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "1374bca5edab7a317c4ffbc9df1e239ceb7dcf5426b6b403474408442a9777ac"
++dependencies = [
++ "indexmap 1.9.3",
++ "proc-macro2",
++ "quote",
++ "syn",
++]
++
+ [[package]]
+ name = "parking"
+ version = "2.2.0"
+@@ -1181,7 +1221,7 @@ checksum = "645493cf344456ef24219d02a768cf1fb92ddf8c92161679ae3d91b91a637be3"
+ dependencies = [
+  "cfg-if",
+  "concurrent-queue",
+- "hermit-abi 0.3.9",
++ "hermit-abi",
+  "pin-project-lite",
+  "rustix 0.38.34",
+  "tracing",
+@@ -1194,30 +1234,6 @@ version = "0.2.17"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+ 
+-[[package]]
+-name = "proc-macro-error"
+-version = "1.0.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "da25490ff9892aab3fcf7c36f08cfb902dd3e71ca0f9f9517bea02a73a5ce38c"
+-dependencies = [
+- "proc-macro-error-attr",
+- "proc-macro2",
+- "quote",
+- "syn 1.0.109",
+- "version_check",
+-]
+-
+-[[package]]
+-name = "proc-macro-error-attr"
+-version = "1.0.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a1be40180e52ecc98ad80b184934baf3d0d29f979574e439af5a55274b35f869"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "version_check",
+-]
+-
+ [[package]]
+ name = "proc-macro2"
+ version = "1.0.81"
+@@ -1427,6 +1443,7 @@ dependencies = [
+  "anyhow",
+  "async-std",
+  "cidr-utils",
++ "clap",
+  "colored",
+  "colorful",
+  "dirs",
+@@ -1436,11 +1453,11 @@ dependencies = [
+  "hickory-resolver",
+  "itertools",
+  "log",
++ "parameterized",
+  "rand",
+  "rlimit",
+  "serde",
+  "serde_derive",
+- "structopt",
+  "subprocess",
+  "text_placeholder",
+  "toml",
+@@ -1486,7 +1503,7 @@ checksum = "11bd257a6541e141e42ca6d24ae26f7714887b47e89aa739099104c7e4d3b7fc"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+ ]
+ 
+ [[package]]
+@@ -1552,33 +1569,9 @@ checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
+ 
+ [[package]]
+ name = "strsim"
+-version = "0.8.0"
++version = "0.11.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
+-
+-[[package]]
+-name = "structopt"
+-version = "0.3.26"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0c6b5c64445ba8094a6ab0c3cd2ad323e07171012d9c98b0b15651daf1787a10"
+-dependencies = [
+- "clap",
+- "lazy_static",
+- "structopt-derive",
+-]
+-
+-[[package]]
+-name = "structopt-derive"
+-version = "0.4.18"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "dcb5ae327f9cc13b68763b5749770cb9e048a99bd9dfdfa58d0cf05d5f64afe0"
+-dependencies = [
+- "heck 0.3.3",
+- "proc-macro-error",
+- "proc-macro2",
+- "quote",
+- "syn 1.0.109",
+-]
++checksum = "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
+ 
+ [[package]]
+ name = "subprocess"
+@@ -1592,9 +1585,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "syn"
+-version = "1.0.109"
++version = "2.0.60"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "72b64191b275b66ffe2469e8af2c1cfe3bafa67b529ead792a6d0160888b4237"
++checksum = "909518bc7b1c9b779f1bbf07f2929d35af9f0f37e47c6e9ef7f9dddc1e1821f3"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+@@ -1602,14 +1595,13 @@ dependencies = [
+ ]
+ 
+ [[package]]
+-name = "syn"
+-version = "2.0.60"
++name = "terminal_size"
++version = "0.3.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "909518bc7b1c9b779f1bbf07f2929d35af9f0f37e47c6e9ef7f9dddc1e1821f3"
++checksum = "21bebf2b7c9e0a515f6e0f8c51dc0f8e4696391e6f1ff30379559f8365fb0df7"
+ dependencies = [
+- "proc-macro2",
+- "quote",
+- "unicode-ident",
++ "rustix 0.38.34",
++ "windows-sys 0.48.0",
+ ]
+ 
+ [[package]]
+@@ -1623,15 +1615,6 @@ dependencies = [
+  "serde_json",
+ ]
+ 
+-[[package]]
+-name = "textwrap"
+-version = "0.11.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060"
+-dependencies = [
+- "unicode-width",
+-]
+-
+ [[package]]
+ name = "thiserror"
+ version = "1.0.59"
+@@ -1649,7 +1632,7 @@ checksum = "d1cd413b5d558b4c5bf3680e324a6fa5014e7b7c067a51e69dbdf47eb7148b66"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+ ]
+ 
+ [[package]]
+@@ -1720,7 +1703,7 @@ version = "0.22.12"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "d3328d4f68a705b2a4498da1d580585d39a6510f98318a2cec3018a7ec61ddef"
+ dependencies = [
+- "indexmap",
++ "indexmap 2.2.6",
+  "serde",
+  "serde_spanned",
+  "toml_datetime",
+@@ -1746,7 +1729,7 @@ checksum = "34704c8d6ebcbc939824180af020566b01a7c01f80641264eba0999f6c2b6be7"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+ ]
+ 
+ [[package]]
+@@ -1779,18 +1762,6 @@ dependencies = [
+  "tinyvec",
+ ]
+ 
+-[[package]]
+-name = "unicode-segmentation"
+-version = "1.11.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d4c87d22b6e3f4a18d4d40ef354e97c90fcb14dd91d7dc0aa9d8a1172ebf7202"
+-
+-[[package]]
+-name = "unicode-width"
+-version = "0.1.12"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "68f5e5f3158ecfd4b8ff6fe086db7c8467a2dfdac97fe420f2b7c4aa97af66d6"
+-
+ [[package]]
+ name = "untrusted"
+ version = "0.9.0"
+@@ -1820,12 +1791,6 @@ version = "1.9.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5a84c137d37ab0142f0f2ddfe332651fdbf252e7b7dbb4e67b6c1f1b2e925101"
+ 
+-[[package]]
+-name = "vec_map"
+-version = "0.8.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f1bddf1187be692e79c5ffeab891132dfb0f236ed36a43c7ed39f1165ee20191"
+-
+ [[package]]
+ name = "version_check"
+ version = "0.9.4"
+@@ -1874,7 +1839,7 @@ dependencies = [
+  "once_cell",
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+  "wasm-bindgen-shared",
+ ]
+ 
+@@ -1908,7 +1873,7 @@ checksum = "e94f17b526d0a461a191c78ea52bbce64071ed5c04c9ffe424dcb38f74171bb7"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+  "wasm-bindgen-backend",
+  "wasm-bindgen-shared",
+ ]
+@@ -2132,5 +2097,5 @@ checksum = "9ce1b18ccd8e73a9321186f97e46f9f04b778851177567b1975109d26a08d2a6"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+- "syn 2.0.60",
++ "syn",
+ ]
+diff --git a/Cargo.toml b/Cargo.toml
+index 52c68fc7..30c508fd 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -17,8 +17,8 @@ exclude = [
+ ]
+ 
+ [dependencies]
++clap = { version = "4.5.4", features = ["derive", "wrap_help"] }
+ colored = "2.1.0"
+-structopt = "0.3.20"
+ async-std = "1.7.0"
+ futures = "0.3"
+ rlimit = "0.10.1"
+@@ -40,6 +40,7 @@ subprocess = "0.2.6"
+ text_placeholder = { version = "0.5", features = ["struct_context"] }
+ 
+ [dev-dependencies]
++parameterized = "2.0.0"
+ wait-timeout = "0.2"
+ 
+ [package.metadata.deb]
+diff --git a/src/input.rs b/src/input.rs
+index 08fbed89..8bdb6041 100644
+--- a/src/input.rs
++++ b/src/input.rs
+@@ -1,35 +1,31 @@
+ //! Provides a means to read, parse and hold configuration options for scans.
++use clap::{Parser, ValueEnum};
+ use serde_derive::Deserialize;
+ use std::collections::HashMap;
+ use std::fs;
+ use std::path::PathBuf;
+-use structopt::{clap::arg_enum, StructOpt};
+ 
+ const LOWEST_PORT_NUMBER: u16 = 1;
+ const TOP_PORT_NUMBER: u16 = 65535;
+ 
+-arg_enum! {
+-    /// Represents the strategy in which the port scanning will run.
+-    ///   - Serial will run from start to end, for example 1 to 1_000.
+-    ///   - Random will randomize the order in which ports will be scanned.
+-    #[derive(Deserialize, Debug, StructOpt, Clone, Copy, PartialEq, Eq)]
+-    pub enum ScanOrder {
+-        Serial,
+-        Random,
+-    }
++/// Represents the strategy in which the port scanning will run.
++///   - Serial will run from start to end, for example 1 to 1_000.
++///   - Random will randomize the order in which ports will be scanned.
++#[derive(Deserialize, Debug, ValueEnum, Clone, Copy, PartialEq, Eq)]
++pub enum ScanOrder {
++    Serial,
++    Random,
+ }
+ 
+-arg_enum! {
+-    /// Represents the scripts variant.
+-    ///   - none will avoid running any script, only portscan results will be shown.
+-    ///   - default will run the default embedded nmap script, that's part of RustScan since the beginning.
+-    ///   - custom will read the ScriptConfig file and the available scripts in the predefined folders
+-    #[derive(Deserialize, Debug, StructOpt, Clone, PartialEq, Eq, Copy)]
+-    pub enum ScriptsRequired {
+-        None,
+-        Default,
+-        Custom,
+-    }
++/// Represents the scripts variant.
++///   - none will avoid running any script, only portscan results will be shown.
++///   - default will run the default embedded nmap script, that's part of RustScan since the beginning.
++///   - custom will read the ScriptConfig file and the available scripts in the predefined folders
++#[derive(Deserialize, Debug, ValueEnum, Clone, PartialEq, Eq, Copy)]
++pub enum ScriptsRequired {
++    None,
++    Default,
++    Custom,
+ }
+ 
+ /// Represents the range of ports to be scanned.
+@@ -63,8 +59,13 @@ fn parse_range(input: &str) -> Result<PortRange, String> {
+     }
+ }
+ 
+-#[derive(StructOpt, Debug, Clone)]
+-#[structopt(name = "rustscan", setting = structopt::clap::AppSettings::TrailingVarArg)]
++#[derive(Parser, Debug, Clone)]
++#[command(
++    name = "rustscan",
++    version = env!("CARGO_PKG_VERSION"),
++    max_term_width = 120,
++    help_template = "{bin} {version}\n{about}\n\nUSAGE:\n    {usage}\n\nOPTIONS:\n{options}",
++)]
+ #[allow(clippy::struct_excessive_bools)]
+ /// Fast Port Scanner built in Rust.
+ /// WARNING Do not use this program against sensitive infrastructure since the
+@@ -73,69 +74,69 @@ fn parse_range(input: &str) -> Result<PortRange, String> {
+ /// - GitHub <https://github.com/RustScan/RustScan>
+ pub struct Opts {
+     /// A comma-delimited list or newline-delimited file of separated CIDRs, IPs, or hosts to be scanned.
+-    #[structopt(short, long, use_delimiter = true)]
++    #[arg(short, long, value_delimiter = ',')]
+     pub addresses: Vec<String>,
+ 
+     /// A list of comma separated ports to be scanned. Example: 80,443,8080.
+-    #[structopt(short, long, use_delimiter = true)]
++    #[arg(short, long, value_delimiter = ',')]
+     pub ports: Option<Vec<u16>>,
+ 
+     /// A range of ports with format start-end. Example: 1-1000.
+-    #[structopt(short, long, conflicts_with = "ports", parse(try_from_str = parse_range))]
++    #[arg(short, long, conflicts_with = "ports", value_parser = parse_range)]
+     pub range: Option<PortRange>,
+ 
+     /// Whether to ignore the configuration file or not.
+-    #[structopt(short, long)]
++    #[arg(short, long)]
+     pub no_config: bool,
+ 
+     /// Custom path to config file
+-    #[structopt(short, long, parse(from_os_str))]
++    #[arg(short, long, value_parser)]
+     pub config_path: Option<PathBuf>,
+ 
+     /// Greppable mode. Only output the ports. No Nmap. Useful for grep or outputting to a file.
+-    #[structopt(short, long)]
++    #[arg(short, long)]
+     pub greppable: bool,
+ 
+     /// Accessible mode. Turns off features which negatively affect screen readers.
+-    #[structopt(long)]
++    #[arg(long)]
+     pub accessible: bool,
+ 
+     /// A comma-delimited list or file of DNS resolvers.
+-    #[structopt(long)]
++    #[arg(long)]
+     pub resolver: Option<String>,
+ 
+     /// The batch size for port scanning, it increases or slows the speed of
+     /// scanning. Depends on the open file limit of your OS.  If you do 65535
+     /// it will do every port at the same time. Although, your OS may not
+     /// support this.
+-    #[structopt(short, long, default_value = "4500")]
++    #[arg(short, long, default_value = "4500")]
+     pub batch_size: u16,
+ 
+     /// The timeout in milliseconds before a port is assumed to be closed.
+-    #[structopt(short, long, default_value = "1500")]
++    #[arg(short, long, default_value = "1500")]
+     pub timeout: u32,
+ 
+     /// The number of tries before a port is assumed to be closed.
+     /// If set to 0, rustscan will correct it to 1.
+-    #[structopt(long, default_value = "1")]
++    #[arg(long, default_value = "1")]
+     pub tries: u8,
+ 
+     /// Automatically ups the ULIMIT with the value you provided.
+-    #[structopt(short, long)]
++    #[arg(short, long)]
+     pub ulimit: Option<u64>,
+ 
+     /// The order of scanning to be performed. The "serial" option will
+     /// scan ports in ascending order while the "random" option will scan
+     /// ports randomly.
+-    #[structopt(long, possible_values = &ScanOrder::variants(), case_insensitive = true, default_value = "serial")]
++    #[arg(long, value_enum, ignore_case = true, default_value = "serial")]
+     pub scan_order: ScanOrder,
+ 
+     /// Level of scripting required for the run.
+-    #[structopt(long, possible_values = &ScriptsRequired::variants(), case_insensitive = true, default_value = "default")]
++    #[arg(long, value_enum, ignore_case = true, default_value = "default")]
+     pub scripts: ScriptsRequired,
+ 
+     /// Use the top 1000 ports.
+-    #[structopt(long)]
++    #[arg(long)]
+     pub top: bool,
+ 
+     /// The Script arguments to run.
+@@ -143,18 +144,18 @@ pub struct Opts {
+     /// Example: 'rustscan -t 1500 -a 127.0.0.1 -- -A -sC'.
+     /// This command adds -Pn -vvv -p $PORTS automatically to nmap.
+     /// For things like --script '(safe and vuln)' enclose it in quotations marks \"'(safe and vuln)'\"
+-    #[structopt(last = true)]
++    #[arg(last = true)]
+     pub command: Vec<String>,
+ 
+     /// A list of comma separated ports to be excluded from scanning. Example: 80,443,8080.
+-    #[structopt(short, long, use_delimiter = true)]
++    #[arg(short, long, value_delimiter = ',')]
+     pub exclude_ports: Option<Vec<u16>>,
+ }
+ 
+ #[cfg(not(tarpaulin_include))]
+ impl Opts {
+     pub fn read() -> Self {
+-        let mut opts = Opts::from_args();
++        let mut opts = Opts::parse();
+ 
+         if opts.ports.is_none() && opts.range.is_none() {
+             opts.range = Some(PortRange {
+@@ -309,7 +310,11 @@ pub fn default_config_path() -> PathBuf {
+ 
+ #[cfg(test)]
+ mod tests {
++    use clap::{CommandFactory, Parser};
++    use parameterized::parameterized;
++
+     use super::{Config, Opts, PortRange, ScanOrder, ScriptsRequired};
++
+     impl Config {
+         fn default() -> Self {
+             Self {
+@@ -331,6 +336,31 @@ mod tests {
+         }
+     }
+ 
++    #[test]
++    fn verify_cli() {
++        Opts::command().debug_assert();
++    }
++
++    #[parameterized(input = {
++        vec!["rustscan", "--addresses", "127.0.0.1"],
++        vec!["rustscan", "--addresses", "127.0.0.1", "--", "-sCV"],
++        vec!["rustscan", "--addresses", "127.0.0.1", "--", "-A"],
++        vec!["rustscan", "-t", "1500", "-a", "127.0.0.1", "--", "-A", "-sC"],
++        vec!["rustscan", "--addresses", "127.0.0.1", "--", "--script", r#""'(safe and vuln)'""#],
++    }, command = {
++        vec![],
++        vec!["-sCV".to_owned()],
++        vec!["-A".to_owned()],
++        vec!["-A".to_owned(), "-sC".to_owned()],
++        vec!["--script".to_owned(), "\"'(safe and vuln)'\"".to_owned()],
++    })]
++    fn parse_trailing_command(input: Vec<&str>, command: Vec<String>) {
++        let opts = Opts::parse_from(input);
++
++        assert_eq!(vec!["127.0.0.1".to_owned()], opts.addresses);
++        assert_eq!(command, opts.command);
++    }
++
+     #[test]
+     fn opts_no_merge_when_config_is_ignored() {
+         let mut opts = Opts::default();
+
+From 0779071f7fb011d74ceaa73072a2318a31d895b1 Mon Sep 17 00:00:00 2001
+From: "Autumn (Bee)" <github@skerritt.blog>
+Date: Sat, 18 May 2024 14:49:03 +0100
+Subject: [PATCH 07/18] 2.2.4-rc1
+
+---
+ Cargo.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 30c508fd..5022b3bc 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -1,6 +1,6 @@
+ [package]
+ name = "rustscan"
+-version = "2.2.3"
++version = "2.2.4-rc1"
+ authors = ["Autumn <autumn@skerritt.blog>"]
+ edition = "2018"
+ description = "Faster Nmap Scanning with Rust"
+
+From 16250456e6a73d7d08eb7cd17080bf2525b4d7bc Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Sat, 18 May 2024 15:18:37 +0100
+Subject: [PATCH 08/18] Bump itertools from 0.12.1 to 0.13.0 (#593)
+
+Bumps [itertools](https://github.com/rust-itertools/itertools) from 0.12.1 to 0.13.0.
+- [Changelog](https://github.com/rust-itertools/itertools/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/rust-itertools/itertools/compare/v0.12.1...v0.13.0)
+
+---
+updated-dependencies:
+- dependency-name: itertools
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Cargo.lock | 4 ++--
+ Cargo.toml | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index bade2211..49f046b6 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -927,9 +927,9 @@ checksum = "8f518f335dce6725a761382244631d86cf0ccb2863413590b31338feb467f9c3"
+ 
+ [[package]]
+ name = "itertools"
+-version = "0.12.1"
++version = "0.13.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ba291022dbbd398a455acf126c1e341954079855bc60dfdda641363bd6922569"
++checksum = "413ee7dfc52ee1a4949ceeb7dbc8a33f2d6c088194d9f922fb8318faf1f01186"
+ dependencies = [
+  "either",
+ ]
+diff --git a/Cargo.toml b/Cargo.toml
+index 5022b3bc..766ab5d0 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -33,7 +33,7 @@ toml = "0.8.12"
+ serde = "1.0.124"
+ serde_derive = "1.0.116"
+ cidr-utils = "0.6.1"
+-itertools = "0.12.1"
++itertools = "0.13.0"
+ hickory-resolver = { version = "0.24.0", features = ["dns-over-rustls"] }
+ anyhow = "1.0.40"
+ subprocess = "0.2.6"
+
+From bfb827c0b8455557b4b4ce904a3eae42b435dfa3 Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Sat, 18 May 2024 15:18:47 +0100
+Subject: [PATCH 09/18] Bump toml from 0.8.12 to 0.8.13 (#592)
+
+Bumps [toml](https://github.com/toml-rs/toml) from 0.8.12 to 0.8.13.
+- [Commits](https://github.com/toml-rs/toml/compare/toml-v0.8.12...toml-v0.8.13)
+
+---
+updated-dependencies:
+- dependency-name: toml
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Cargo.lock | 16 ++++++++--------
+ Cargo.toml |  2 +-
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 49f046b6..4dd082d5 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1519,9 +1519,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "serde_spanned"
+-version = "0.6.5"
++version = "0.6.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "eb3622f419d1296904700073ea6cc23ad690adbd66f13ea683df73298736f0c1"
++checksum = "79e674e01f999af37c49f70a6ede167a8a60b2503e56c5599532a65baa5969a0"
+ dependencies = [
+  "serde",
+ ]
+@@ -1678,9 +1678,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "toml"
+-version = "0.8.12"
++version = "0.8.13"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e9dd1545e8208b4a5af1aa9bbd0b4cf7e9ea08fabc5d0a5c67fcaafa17433aa3"
++checksum = "a4e43f8cc456c9704c851ae29c67e17ef65d2c30017c17a9765b89c382dc8bba"
+ dependencies = [
+  "serde",
+  "serde_spanned",
+@@ -1690,18 +1690,18 @@ dependencies = [
+ 
+ [[package]]
+ name = "toml_datetime"
+-version = "0.6.5"
++version = "0.6.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3550f4e9685620ac18a50ed434eb3aec30db8ba93b0287467bca5826ea25baf1"
++checksum = "4badfd56924ae69bcc9039335b2e017639ce3f9b001c393c1b2d1ef846ce2cbf"
+ dependencies = [
+  "serde",
+ ]
+ 
+ [[package]]
+ name = "toml_edit"
+-version = "0.22.12"
++version = "0.22.13"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d3328d4f68a705b2a4498da1d580585d39a6510f98318a2cec3018a7ec61ddef"
++checksum = "c127785850e8c20836d49732ae6abfa47616e60bf9d9f57c43c250361a9db96c"
+ dependencies = [
+  "indexmap 2.2.6",
+  "serde",
+diff --git a/Cargo.toml b/Cargo.toml
+index 766ab5d0..909ebd67 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -29,7 +29,7 @@ gcd = "2.0.1"
+ rand = "0.8.5"
+ colorful = "0.2.1"
+ ansi_term = "0.12.1"
+-toml = "0.8.12"
++toml = "0.8.13"
+ serde = "1.0.124"
+ serde_derive = "1.0.116"
+ cidr-utils = "0.6.1"
+
+From 3e74f5cb69cac90638f98313b60684f9ad975b95 Mon Sep 17 00:00:00 2001
+From: "Autumn (Bee)" <github@skerritt.blog>
+Date: Mon, 20 May 2024 13:20:34 +0100
+Subject: [PATCH 10/18] Update dockere in README (#595)
+
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index d85bcf30..8c56ba1d 100644
+--- a/README.md
++++ b/README.md
+@@ -15,7 +15,7 @@
+ |                     🐋 `(Recommended)`                      |              👩‍💻               |             🏗️              |             🔧              |
+ | :---------------------------------------------------------: | :---------------------------: | :-------------------------: | :-------------------------: |
+ |               [![Docker][DockerPic]][Docker]                | [![Kali][Kali1]][Kali/Debian] | [![Arch][Arch]][Arch-Linux] | [![apple][apple]][Homebrew] |
+-| `docker pull rustscan/rustscan:2.1.1`</br>[Docker][usage-0] | [Link to Documentation][kali] |      `yay -S rustscan`      |   `brew install rustscan`   |
++| `docker pull rustscan/rustscan:latest`</br>[Docker][usage-0] | [Link to Documentation][kali] |      `yay -S rustscan`      |   `brew install rustscan`   |
+ 
+ ---
+ 
+
+From ac3ad3a6f76ca41d4c476a1386512575f700ccb2 Mon Sep 17 00:00:00 2001
+From: LeoFVO <leofvo@proton.me>
+Date: Thu, 6 Jun 2024 22:31:10 +0200
+Subject: [PATCH 11/18] ci: refactor ci/cd and extends matrix build (#598)
+
+* ci(release): refactor ci/cd and extends matrix build
+
+- adding ARM release
+- fix build/test issues during release
+- adding binary (linux + exe) in the release assets
+- uploading all cross-build assets via archive (zip + tar.xz)
+
+Signed-off-by: LeoFVO <leofvo@proton.me>
+
+* fix(ci): upload assets to release only in case of release
+
+Signed-off-by: LeoFVO <leofvo@proton.me>
+
+---------
+
+Signed-off-by: LeoFVO <leofvo@proton.me>
+---
+ .github/workflows/build.yml    |   4 +
+ .github/workflows/docker.yml   |   6 +-
+ .github/workflows/markdown.yml |   2 +
+ .github/workflows/release.yml  | 163 ++++++++++++++-------------------
+ Cargo.lock                     |  14 ++-
+ Cargo.toml                     |   3 +-
+ 6 files changed, 89 insertions(+), 103 deletions(-)
+
+diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+index c69b70f3..48d14762 100644
+--- a/.github/workflows/build.yml
++++ b/.github/workflows/build.yml
+@@ -1,9 +1,13 @@
+ name: Build
+ on:
+   pull_request:
++    paths-ignore:
++      - '.github/**'
+   push:
+     branches:
+       - master
++    paths-ignore:
++      - '.github/**'
+   schedule:
+     - cron: '00 01 * * *'
+ 
+diff --git a/.github/workflows/docker.yml b/.github/workflows/docker.yml
+index e5461b74..cc06efe7 100644
+--- a/.github/workflows/docker.yml
++++ b/.github/workflows/docker.yml
+@@ -1,11 +1,11 @@
+-name: Publish Docker image
++name: Release - Distribute Docker image
+ 
+ on:
+   push:
+     tags:
+       - '[0-9]+.[0-9]+.[0-9]+'
+-  release:
+-    types: [published]
++  # release:
++  #   types: [published]
+ 
+ jobs:
+   push_to_registry:
+diff --git a/.github/workflows/markdown.yml b/.github/workflows/markdown.yml
+index 6d176da3..540435bd 100644
+--- a/.github/workflows/markdown.yml
++++ b/.github/workflows/markdown.yml
+@@ -4,6 +4,8 @@ on:
+   push:
+     branches:
+     - master
++    paths-ignore:
++      - '.github/**'
+   schedule:
+   # Run everyday at 9:00 AM (See https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07)
+   - cron: "0 9 * * *"
+diff --git a/.github/workflows/release.yml b/.github/workflows/release.yml
+index 6e664cfb..240389b6 100644
+--- a/.github/workflows/release.yml
++++ b/.github/workflows/release.yml
+@@ -1,5 +1,9 @@
+-name: Release
++name: Release - Distribute binaries
+ on:
++  # If we want to make release using github interface.
++  # release:
++  #   types: [published]
++  # If we want to make release by pushing new tag.
+   push:
+     tags:
+       - '[0-9]+.[0-9]+.[0-9]+'
+@@ -15,17 +19,29 @@ env:
+   BIN_NAME: rustscan
+   PROJECT_NAME: rustscan
+   REPO_NAME: RustScan/RustScan
+-  # BREW_TAP: RustScan/homebrew-tap
++  BREW_TAP: RustScan/homebrew-tap
+ 
+ jobs:
+-  dist:
+-    name: Dist
++  build:
++    name: Build
+     runs-on: ${{ matrix.os }}
+     strategy:
+       fail-fast: false # don't fail other jobs if one fails
+       matrix:
+-        build: [x86_64-linux, x86_64-macos, x86_64-windows] #, x86_64-win-gnu, win32-msvc
++        # aarch64-linux is failing due to python3 missing issues during tests. I'm removing it for now.
++        # build: [x86_64-linux, aarch64-linux, x86_64-macos, aarch64-macos, x86_64-windows, x86_64-win-gnu]
++        build: [x86_64-linux, x86_64-macos, aarch64-macos, x86_64-windows, x86_64-win-gnu]
+         include:
++          - build: aarch64-macos
++            os: macos-latest
++            rust: stable
++            target: aarch64-apple-darwin
++            cross: true
++          # - build: aarch64-linux
++          #   os: ubuntu-20.04
++          #   rust: stable
++          #   target: aarch64-unknown-linux-gnu
++          #   cross: true
+           - build: x86_64-linux
+             os: ubuntu-20.04
+             rust: stable
+@@ -41,22 +57,11 @@ jobs:
+             rust: stable
+             target: x86_64-pc-windows-msvc
+             cross: false
+-        # - build: aarch64-linux
+-        #   os: ubuntu-20.04
+-        #   rust: stable
+-        #   target: aarch64-unknown-linux-gnu
+-        # - build: aarch64-macos
+-        #   os: macos-latest
+-        #   rust: stable
+-        #   target: aarch64-apple-darwin
+-        # - build: x86_64-win-gnu
+-        #   os: windows-2019
+-        #   rust: stable-x86_64-gnu
+-        #   target: x86_64-pc-windows-gnu
+-        # - build: win32-msvc
+-        #   os: windows-2019
+-        #   rust: stable
+-        #   target: i686-pc-windows-msvc
++          - build: x86_64-win-gnu
++            os: windows-2019
++            rust: stable-x86_64-gnu
++            target: x86_64-pc-windows-gnu
++            cross: false
+ 
+     steps:
+       - name: Set Git config. (windows only)
+@@ -67,8 +72,11 @@ jobs:
+           git config --global pack.threads "1" 
+           git config --global pack.deltaCacheSize "512m"
+ 
+-      - name: Install python 3.10 for windows
+-        if: contains(matrix.build, 'windows') # Windows is missing some dependencies
++      - name: Install dependencies
++        if: contains(matrix.build, 'aarch64-linux') # Windows is missing some dependencies
++        run: sudo apt-get update && sudo apt-get install -y gcc-aarch64-linux-gnu python3
++
++      - name: Install python 3.10
+         uses: actions/setup-python@v5
+         with:
+           python-version: '3.10'
+@@ -101,23 +109,17 @@ jobs:
+           args: --release --locked --target ${{ matrix.target }}
+ 
+       - name: Calculate tag name
+-        if: contains(matrix.build, 'linux')
++        # if: contains(matrix.build, 'linux')
++        shell: bash
+         run: |
+           name=dev
+           if [[ ${GITHUB_REF} =~ refs/tags/[0-9]+.[0-9]+.[0-9]+ ]]; then
+             name=${GITHUB_REF#refs/tags/}
+           fi
+-          echo ::set-output name=val::$name
+-          echo TAG=$name >> $GITHUB_ENV
++          echo "TAG=$name" >> $GITHUB_ENV
+         id: tagname
+ 
+-      - name: Build deb package (linux only)
+-        if: contains(matrix.build, 'linux')
+-        run: |
+-          cargo install cargo-deb
+-          cargo deb --target ${{ matrix.target }} --deb-version ${TAG}
+-
+-      - name: Build archive
++      - name: Build and package artifacts
+         shell: bash
+         run: |
+           mkdir dist
+@@ -128,17 +130,19 @@ jobs:
+           fi
+ 
+           if [[ "${{ matrix.build }}" =~ "linux" ]]; then
+-            cp "target/${{ matrix.target }}/debian/rustscan_${TAG}_amd64.deb" "dist/"
++            cargo install cargo-deb
++            cargo deb --target ${{ matrix.target }} --deb-version ${TAG}
++            cp "target/${{ matrix.target }}/debian/rustscan_${TAG}_amd64.deb" "dist/" || true
+           fi
++
+       - uses: actions/upload-artifact@v4.3.3
+         with:
+           name: bins-${{ matrix.build }}
+           path: dist
+ 
+-  publish:
+-    name: Publish
+-    needs: [dist]
+-    if: contains(fromJson('["push", "schedule"]'), github.event_name) && startsWith(github.ref, 'refs/tags/')
++  package:
++    name: Package
++    needs: [build]
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout sources
+@@ -147,19 +151,18 @@ jobs:
+           submodules: false
+ 
+       - uses: actions/download-artifact@v4
+-        # with:
+-        #   path: dist
+-      # - run: ls -al ./dist
+-      - run: ls -al bins-*
++        with:
++          path: dist
+ 
+       - name: Calculate tag name
++        # if: contains(matrix.build, 'linux')
++        shell: bash
+         run: |
+           name=dev
+           if [[ ${GITHUB_REF} =~ refs/tags/[0-9]+.[0-9]+.[0-9]+ ]]; then
+             name=${GITHUB_REF#refs/tags/}
+           fi
+-          echo ::set-output name=val::$name
+-          echo TAG=$name >> $GITHUB_ENV
++          echo "TAG=$name" >> $GITHUB_ENV
+         id: tagname
+ 
+       - name: Build archive
+@@ -168,78 +171,46 @@ jobs:
+           set -ex
+           rm -rf tmp
+           mkdir tmp
+-          mkdir dist
+-          for dir in bins-* ; do
+-              platform=${dir#"bins-"}
++          for dir in dist/bins-* ; do
++              platform=${dir#"dist/bins-"}
+               unset exe
+-              if [[ $platform =~ "windows" ]]; then
++              if [[ $platform =~ "win" ]]; then
+                   exe=".exe"
+               fi
+               pkgname=$PROJECT_NAME-$TAG-$platform
+               mkdir tmp/$pkgname
+-              # cp LICENSE README.md tmp/$pkgname
+-              mv bins-$platform/$BIN_NAME$exe tmp/$pkgname
++              cp $dir/$BIN_NAME$exe dist/ || true
++              mv $dir/$BIN_NAME$exe tmp/$pkgname
+               chmod +x tmp/$pkgname/$BIN_NAME$exe
+ 
+               if [[ $platform =~ "linux" ]]; then
+-                  mv "bins-$platform/rustscan_${TAG}_amd64.deb" dist/
++                  mv "$dir/rustscan_${TAG}_amd64.deb" dist/ || true
+               fi
+ 
+-              if [ "$exe" = "" ]; then
+-                  tar cJf dist/$pkgname.tar.xz -C tmp $pkgname
+-              else
+-                  (cd tmp && 7z a -r ../dist/$pkgname.zip $pkgname)
+-              fi
++              tar cJf dist/$pkgname.tar.xz -C tmp $pkgname
++              7z a dist/$pkgname.zip tmp/$pkgname
+           done
+ 
+       - name: Upload binaries to release
++        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) || github.event_name == 'release'
+         uses: svenstaro/upload-release-action@v2
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+           file: dist/*
+           file_glob: true
+-          tag: ${{ steps.tagname.outputs.val }}
++          tag: ${{ github.ref }}
+           overwrite: true
+ 
+-      - name: Extract version
+-        id: extract-version
+-        run: |
+-          printf "::set-output name=%s::%s\n" tag-name "${GITHUB_REF#refs/tags/}"
+-      - uses: mislav/bump-homebrew-formula-action@v3
+-        with:
+-          formula-path: ${{env.PROJECT_NAME}}.rb
+-          homebrew-tap: ${{ env.BREW_TAP }}
+-          download-url: 'https://github.com/${{ env.REPO_NAME }}/releases/download/${{ steps.extract-version.outputs.tag-name }}/${{env.PROJECT_NAME}}-${{ steps.extract-version.outputs.tag-name }}-x86_64-macos.tar.xz'
+-          commit-message: updating formula for ${{ env.PROJECT_NAME }}
+-        env:
+-          COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
+-        #
+-        # you can use this initial file in your homebrew-tap if you don't have an initial formula:
+-        # <projectname>.rb
+-        #
+-        # class <Projectname capitalized> < Formula
+-        #   desc "A test formula"
+-        #   homepage "http://www.example.com"
+-        #   url "-----"
+-        #   version "-----"
+-        #   sha256 "-----"
+-
+-        #   def install
+-        #     bin.install "<bin-name>"
+-        #   end
+-        # end
+-
+-      # Uncomment this section if you want to release your package to crates.io
+-      # Before publishing, make sure you have filled out the following fields:
+-      # license or license-file, description, homepage, documentation, repository, readme.
+-      # Read more: https://doc.rust-lang.org/cargo/reference/publishing.html
++      # - uses: mislav/bump-homebrew-formula-action@v3
++      #   with:
++      #     formula-path: ${{env.PROJECT_NAME}}.rb
++      #     homebrew-tap: ${{ env.BREW_TAP }}
++      #     download-url: 'https://github.com/${{ env.REPO_NAME }}/releases/download/${{ github.ref }}/${{env.PROJECT_NAME}}-${{ github.ref }}-x86_64-macos.tar.xz'
++      #     commit-message: updating formula for ${{ env.PROJECT_NAME }}
++      #   env:
++      #     COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
+ 
+-      - name: Install ${{ matrix.rust }} toolchain
+-        uses: actions-rs/toolchain@v1
+-        with:
+-          profile: minimal
+-          toolchain: ${{ matrix.rust }}
+-          target: ${{ matrix.target }}
+       - run: cargo publish --token ${CRATES_TOKEN}
++        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) || github.event_name == 'release'
+         env:
+-          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
++          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
+\ No newline at end of file
+diff --git a/Cargo.lock b/Cargo.lock
+index 4dd082d5..a864a322 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -49,15 +49,16 @@ dependencies = [
+ 
+ [[package]]
+ name = "anstream"
+-version = "0.6.13"
++version = "0.6.14"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d96bd03f33fe50a863e394ee9718a706f988b9079b20c3784fb726e7678b62fb"
++checksum = "418c75fa768af9c03be99d17643f93f79bbba589895012a80e3452a19ddda15b"
+ dependencies = [
+  "anstyle",
+  "anstyle-parse",
+  "anstyle-query",
+  "anstyle-wincon",
+  "colorchoice",
++ "is_terminal_polyfill",
+  "utf8parse",
+ ]
+ 
+@@ -925,6 +926,12 @@ version = "2.9.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "8f518f335dce6725a761382244631d86cf0ccb2863413590b31338feb467f9c3"
+ 
++[[package]]
++name = "is_terminal_polyfill"
++version = "1.70.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f8478577c03552c21db0e2724ffb8986a5ce7af88107e6be5d2ee6e158c12800"
++
+ [[package]]
+ name = "itertools"
+ version = "0.13.0"
+@@ -1437,9 +1444,10 @@ dependencies = [
+ 
+ [[package]]
+ name = "rustscan"
+-version = "2.2.3"
++version = "2.2.4-rc1"
+ dependencies = [
+  "ansi_term",
++ "anstream",
+  "anyhow",
+  "async-std",
+  "cidr-utils",
+diff --git a/Cargo.toml b/Cargo.toml
+index 909ebd67..06901f37 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -9,7 +9,7 @@ repository = "https://github.com/rustscan/rustscan"
+ license = "MIT"
+ keywords = ["port", "scanning", "nmap"]
+ categories = ["command-line-utilities"]
+-readme="README.md"
++readme = "README.md"
+ exclude = [
+     ".github/*",
+     "pictures/*",
+@@ -24,6 +24,7 @@ futures = "0.3"
+ rlimit = "0.10.1"
+ log = "0.4.0"
+ env_logger = "0.11.3"
++anstream = "=0.6.14"
+ dirs = "5.0.1"
+ gcd = "2.0.1"
+ rand = "0.8.5"
+
+From 8290cad8d6013a48bb7cca43e183ac8982818132 Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Fri, 7 Jun 2024 09:23:50 +0100
+Subject: [PATCH 12/18] Bump toml from 0.8.13 to 0.8.14 (#599)
+
+Bumps [toml](https://github.com/toml-rs/toml) from 0.8.13 to 0.8.14.
+- [Commits](https://github.com/toml-rs/toml/compare/toml-v0.8.13...toml-v0.8.14)
+
+---
+updated-dependencies:
+- dependency-name: toml
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Cargo.lock | 8 ++++----
+ Cargo.toml | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index a864a322..25612944 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1686,9 +1686,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "toml"
+-version = "0.8.13"
++version = "0.8.14"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a4e43f8cc456c9704c851ae29c67e17ef65d2c30017c17a9765b89c382dc8bba"
++checksum = "6f49eb2ab21d2f26bd6db7bf383edc527a7ebaee412d17af4d40fdccd442f335"
+ dependencies = [
+  "serde",
+  "serde_spanned",
+@@ -1707,9 +1707,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "toml_edit"
+-version = "0.22.13"
++version = "0.22.14"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c127785850e8c20836d49732ae6abfa47616e60bf9d9f57c43c250361a9db96c"
++checksum = "f21c7aaf97f1bd9ca9d4f9e73b0a6c74bd5afef56f2bc931943a6e1c37e04e38"
+ dependencies = [
+  "indexmap 2.2.6",
+  "serde",
+diff --git a/Cargo.toml b/Cargo.toml
+index 06901f37..8118879f 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -30,7 +30,7 @@ gcd = "2.0.1"
+ rand = "0.8.5"
+ colorful = "0.2.1"
+ ansi_term = "0.12.1"
+-toml = "0.8.13"
++toml = "0.8.14"
+ serde = "1.0.124"
+ serde_derive = "1.0.116"
+ cidr-utils = "0.6.1"
+
+From 534cf8adf831799fb13f12cf0962f91d86e0878b Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Fri, 7 Jun 2024 09:23:58 +0100
+Subject: [PATCH 13/18] Bump alpine from 3.19.1 to 3.20.0 (#597)
+
+Bumps alpine from 3.19.1 to 3.20.0.
+
+---
+updated-dependencies:
+- dependency-name: alpine
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Dockerfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Dockerfile b/Dockerfile
+index 4f8f4cb9..85162a94 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -10,7 +10,7 @@ COPY src/ src/
+ RUN cargo build --release
+ 
+ # Release Stage
+-FROM alpine:3.19.1 as release
++FROM alpine:3.20.0 as release
+ LABEL author="Hydragyrum <https://github.com/Hydragyrum>"
+ LABEL author="LeoFVO <https://github.com/LeoFVO>"
+ 
+
+From f33476468fadadf8485dddddaf0130ee3a392dbd Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Sat, 8 Jun 2024 12:00:05 +0100
+Subject: [PATCH 14/18] Bump clap from 4.5.4 to 4.5.6 (#600)
+
+Bumps [clap](https://github.com/clap-rs/clap) from 4.5.4 to 4.5.6.
+- [Release notes](https://github.com/clap-rs/clap/releases)
+- [Changelog](https://github.com/clap-rs/clap/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/clap-rs/clap/compare/clap_complete-v4.5.4...v4.5.6)
+
+---
+updated-dependencies:
+- dependency-name: clap
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Cargo.lock | 12 ++++++------
+ Cargo.toml |  2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 25612944..47b35bf4 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -358,9 +358,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "clap"
+-version = "4.5.4"
++version = "4.5.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "90bc066a67923782aa8515dbaea16946c5bcc5addbd668bb80af688e53e548a0"
++checksum = "a9689a29b593160de5bc4aacab7b5d54fb52231de70122626c178e6a368994c7"
+ dependencies = [
+  "clap_builder",
+  "clap_derive",
+@@ -368,9 +368,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "clap_builder"
+-version = "4.5.2"
++version = "4.5.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ae129e2e766ae0ec03484e609954119f123cc1fe650337e155d03b022f24f7b4"
++checksum = "2e5387378c84f6faa26890ebf9f0a92989f8873d4d380467bcd0d8d8620424df"
+ dependencies = [
+  "anstream",
+  "anstyle",
+@@ -381,9 +381,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "clap_derive"
+-version = "4.5.4"
++version = "4.5.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "528131438037fd55894f62d6e9f068b8f45ac57ffa77517819645d10aed04f64"
++checksum = "c780290ccf4fb26629baa7a1081e68ced113f1d3ec302fa5948f1c381ebf06c6"
+ dependencies = [
+  "heck 0.5.0",
+  "proc-macro2",
+diff --git a/Cargo.toml b/Cargo.toml
+index 8118879f..905ef774 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -17,7 +17,7 @@ exclude = [
+ ]
+ 
+ [dependencies]
+-clap = { version = "4.5.4", features = ["derive", "wrap_help"] }
++clap = { version = "4.5.6", features = ["derive", "wrap_help"] }
+ colored = "2.1.0"
+ async-std = "1.7.0"
+ futures = "0.3"
+
+From f544f2240b15ff477d184ec525e8b6821484ed27 Mon Sep 17 00:00:00 2001
+From: BrendanGlancy <61941978+BrendanGlancy@users.noreply.github.com>
+Date: Tue, 25 Jun 2024 10:16:06 -0400
+Subject: [PATCH 15/18] Udp Scanning  (#596)
+
+Added UDP scanning support to RustScan
+---
+ src/input.rs        |  10 +-
+ src/lib.rs          |   3 +
+ src/main.rs         |   3 +
+ src/scanner/mod.rs  | 215 ++++++++++++++++++++++++++++++++--
+ src/tui.rs          |   4 +
+ src/udp_packets.rs  | 279 ++++++++++++++++++++++++++++++++++++++++++++
+ tests/timelimits.rs |  54 +++++++++
+ 7 files changed, 556 insertions(+), 12 deletions(-)
+ create mode 100644 src/udp_packets.rs
+
+diff --git a/src/input.rs b/src/input.rs
+index 8bdb6041..c79adf3d 100644
+--- a/src/input.rs
++++ b/src/input.rs
+@@ -150,6 +150,10 @@ pub struct Opts {
+     /// A list of comma separated ports to be excluded from scanning. Example: 80,443,8080.
+     #[arg(short, long, value_delimiter = ',')]
+     pub exclude_ports: Option<Vec<u16>>,
++
++    /// UDP scanning mode, finds UDP ports that send back responses
++    #[arg(long)]
++    pub udp: bool,
+ }
+ 
+ #[cfg(not(tarpaulin_include))]
+@@ -189,7 +193,7 @@ impl Opts {
+ 
+         merge_required!(
+             addresses, greppable, accessible, batch_size, timeout, tries, scan_order, scripts,
+-            command
++            command, udp
+         );
+     }
+ 
+@@ -237,6 +241,7 @@ impl Default for Opts {
+             scripts: ScriptsRequired::Default,
+             config_path: None,
+             exclude_ports: None,
++            udp: false,
+         }
+     }
+ }
+@@ -261,6 +266,7 @@ pub struct Config {
+     command: Option<Vec<String>>,
+     scripts: Option<ScriptsRequired>,
+     exclude_ports: Option<Vec<u16>>,
++    udp: Option<bool>,
+ }
+ 
+ #[cfg(not(tarpaulin_include))]
+@@ -276,6 +282,7 @@ impl Config {
+     /// greppable = true
+     /// scan_order: "Serial"
+     /// exclude_ports = [8080, 9090, 80]
++    /// udp = false
+     ///
+     pub fn read(custom_config_path: Option<PathBuf>) -> Self {
+         let mut content = String::new();
+@@ -332,6 +339,7 @@ mod tests {
+                 scan_order: Some(ScanOrder::Random),
+                 scripts: None,
+                 exclude_ports: None,
++                udp: Some(false),
+             }
+         }
+     }
+diff --git a/src/lib.rs b/src/lib.rs
+index 4b5e682c..b9ad4773 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -31,6 +31,7 @@
+ //!         strategy,
+ //!         true,
+ //!         vec![9000],
++//!         false,
+ //!     );
+ //!
+ //!     let scan_result = block_on(scanner.run());
+@@ -53,3 +54,5 @@ pub mod benchmark;
+ pub mod scripts;
+ 
+ pub mod address;
++
++pub mod udp_packets;
+diff --git a/src/main.rs b/src/main.rs
+index e37faa65..e0cedbeb 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -83,6 +83,8 @@ fn main() {
+     // Added by wasuaje - 01/26/2024:
+     // exclude_ports  is an exclusion port list
+     //
++    // Added by brendanglancy - 5/19/2024:
++    // udp is an option to do a udp scan
+     let scanner = Scanner::new(
+         &ips,
+         batch_size,
+@@ -92,6 +94,7 @@ fn main() {
+         PortStrategy::pick(&opts.range, opts.ports, opts.scan_order),
+         opts.accessible,
+         opts.exclude_ports.unwrap_or_default(),
++        opts.udp,
+     );
+     debug!("Scanner finished building: {:?}", scanner);
+ 
+diff --git a/src/scanner/mod.rs b/src/scanner/mod.rs
+index b745bea6..45fed9cc 100644
+--- a/src/scanner/mod.rs
++++ b/src/scanner/mod.rs
+@@ -1,13 +1,14 @@
+ //! Core functionality for actual scanning behaviour.
+ use crate::port_strategy::PortStrategy;
++use crate::udp_packets::udp_payload::cust_payload;
+ use log::debug;
+ 
+ mod socket_iterator;
+ use socket_iterator::SocketIterator;
+ 
+-use async_std::io;
+ use async_std::net::TcpStream;
+ use async_std::prelude::*;
++use async_std::{io, net::UdpSocket};
+ use colored::Colorize;
+ use futures::stream::FuturesUnordered;
+ use std::{
+@@ -36,6 +37,7 @@ pub struct Scanner {
+     port_strategy: PortStrategy,
+     accessible: bool,
+     exclude_ports: Vec<u16>,
++    udp: bool,
+ }
+ 
+ // Allowing too many arguments for clippy.
+@@ -50,6 +52,7 @@ impl Scanner {
+         port_strategy: PortStrategy,
+         accessible: bool,
+         exclude_ports: Vec<u16>,
++        udp: bool,
+     ) -> Self {
+         Self {
+             batch_size,
+@@ -60,6 +63,7 @@ impl Scanner {
+             ips: ips.iter().map(ToOwned::to_owned).collect(),
+             accessible,
+             exclude_ports,
++            udp,
+         }
+     }
+ 
+@@ -130,25 +134,32 @@ impl Scanner {
+     ///
+     /// Note: `self` must contain `self.ip`.
+     async fn scan_socket(&self, socket: SocketAddr) -> io::Result<SocketAddr> {
+-        let tries = self.tries.get();
++        if self.udp {
++            let payload = cust_payload(socket.port());
++
++            let tries = self.tries.get();
++            for _ in 1..=tries {
++                match self.udp_scan(socket, &payload, self.timeout).await {
++                    Ok(true) => return Ok(socket),
++                    Ok(false) => continue,
++                    Err(e) => return Err(e),
++                }
++            }
++            return Ok(socket);
++        }
+ 
++        let tries = self.tries.get();
+         for nr_try in 1..=tries {
+             match self.connect(socket).await {
+-                Ok(x) => {
++                Ok(tcp_stream) => {
+                     debug!(
+                         "Connection was successful, shutting down stream {}",
+                         &socket
+                     );
+-                    if let Err(e) = x.shutdown(Shutdown::Both) {
++                    if let Err(e) = tcp_stream.shutdown(Shutdown::Both) {
+                         debug!("Shutdown stream error {}", &e);
+                     }
+-                    if !self.greppable {
+-                        if self.accessible {
+-                            println!("Open {socket}");
+-                        } else {
+-                            println!("Open {}", socket.to_string().purple());
+-                        }
+-                    }
++                    self.fmt_ports(socket);
+ 
+                     debug!("Return Ok after {} tries", nr_try);
+                     return Ok(socket);
+@@ -191,6 +202,90 @@ impl Scanner {
+         .await?;
+         Ok(stream)
+     }
++
++    /// Binds to a UDP socket so we can send and recieve packets
++    /// # Example
++    ///
++    /// ```compile_fail
++    /// # use std::net::{IpAddr, Ipv6Addr, SocketAddr};
++    /// let port: u16 = 80;
++    /// // ip is an IpAddr type
++    /// let ip = IpAddr::V6(Ipv6Addr::new(0, 0, 0, 0, 0, 0, 0, 1));
++    /// let socket = SocketAddr::new(ip, port);
++    /// scanner.udp_bind(socket);
++    /// // returns Result which is either Ok(stream) for port is open, or Err for port is closed.
++    /// // Timeout occurs after self.timeout seconds
++    /// ```
++    ///
++    async fn udp_bind(&self, socket: SocketAddr) -> io::Result<UdpSocket> {
++        let local_addr = match socket {
++            SocketAddr::V4(_) => "0.0.0.0:0".parse::<SocketAddr>().unwrap(),
++            SocketAddr::V6(_) => "[::]:0".parse::<SocketAddr>().unwrap(),
++        };
++
++        UdpSocket::bind(local_addr).await
++    }
++
++    /// Performs a UDP scan on the specified socket with a payload and wait duration
++    /// # Example
++    ///
++    /// ```compile_fail
++    /// # use std::net::{IpAddr, Ipv6Addr, SocketAddr};
++    /// # use std::time::Duration;
++    /// let port: u16 = 123;
++    /// // ip is an IpAddr type
++    /// let ip = IpAddr::V6(Ipv6Addr::new(0, 0, 0, 0, 0, 0, 0, 1));
++    /// let socket = SocketAddr::new(ip, port);
++    /// let payload = vec![0, 1, 2, 3];
++    /// let wait = Duration::from_secs(1);
++    /// let result = scanner.udp_scan(socket, payload, wait).await;
++    /// // returns Result which is either Ok(true) if response received, or Ok(false) if timed out.
++    /// // Err is returned for other I/O errors.
++    async fn udp_scan(
++        &self,
++        socket: SocketAddr,
++        payload: &[u8],
++        wait: Duration,
++    ) -> io::Result<bool> {
++        match self.udp_bind(socket).await {
++            Ok(udp_socket) => {
++                let mut buf = [0u8; 1024];
++
++                udp_socket.connect(socket).await?;
++                udp_socket.send(payload).await?;
++
++                match io::timeout(wait, udp_socket.recv(&mut buf)).await {
++                    Ok(size) => {
++                        debug!("Received {} bytes", size);
++                        self.fmt_ports(socket);
++                        Ok(true)
++                    }
++                    Err(e) => {
++                        if e.kind() == io::ErrorKind::TimedOut {
++                            Ok(false)
++                        } else {
++                            Err(e)
++                        }
++                    }
++                }
++            }
++            Err(e) => {
++                println!("Err E binding sock {:?}", e);
++                Err(e)
++            }
++        }
++    }
++
++    /// Formats and prints the port status
++    fn fmt_ports(&self, socket: SocketAddr) {
++        if !self.greppable {
++            if self.accessible {
++                println!("Open {socket}");
++            } else {
++                println!("Open {}", socket.to_string().purple());
++            }
++        }
++    }
+ }
+ 
+ #[cfg(test)]
+@@ -218,6 +313,7 @@ mod tests {
+             strategy,
+             true,
+             vec![9000],
++            false,
+         );
+         block_on(scanner.run());
+         // if the scan fails, it wouldn't be able to assert_eq! as it panicked!
+@@ -241,6 +337,7 @@ mod tests {
+             strategy,
+             true,
+             vec![9000],
++            false,
+         );
+         block_on(scanner.run());
+         // if the scan fails, it wouldn't be able to assert_eq! as it panicked!
+@@ -263,6 +360,7 @@ mod tests {
+             strategy,
+             true,
+             vec![9000],
++            false,
+         );
+         block_on(scanner.run());
+         assert_eq!(1, 1);
+@@ -284,6 +382,7 @@ mod tests {
+             strategy,
+             true,
+             vec![9000],
++            false,
+         );
+         block_on(scanner.run());
+         assert_eq!(1, 1);
+@@ -308,6 +407,100 @@ mod tests {
+             strategy,
+             true,
+             vec![9000],
++            false,
++        );
++        block_on(scanner.run());
++        assert_eq!(1, 1);
++    }
++
++    #[test]
++    fn udp_scan_runs() {
++        // Makes sure the program still runs and doesn't panic
++        let addrs = vec!["127.0.0.1".parse::<IpAddr>().unwrap()];
++        let range = PortRange {
++            start: 1,
++            end: 1_000,
++        };
++        let strategy = PortStrategy::pick(&Some(range), None, ScanOrder::Random);
++        let scanner = Scanner::new(
++            &addrs,
++            10,
++            Duration::from_millis(100),
++            1,
++            true,
++            strategy,
++            true,
++            vec![9000],
++            true,
++        );
++        block_on(scanner.run());
++        // if the scan fails, it wouldn't be able to assert_eq! as it panicked!
++        assert_eq!(1, 1);
++    }
++    #[test]
++    fn udp_ipv6_runs() {
++        // Makes sure the program still runs and doesn't panic
++        let addrs = vec!["::1".parse::<IpAddr>().unwrap()];
++        let range = PortRange {
++            start: 1,
++            end: 1_000,
++        };
++        let strategy = PortStrategy::pick(&Some(range), None, ScanOrder::Random);
++        let scanner = Scanner::new(
++            &addrs,
++            10,
++            Duration::from_millis(100),
++            1,
++            true,
++            strategy,
++            true,
++            vec![9000],
++            true,
++        );
++        block_on(scanner.run());
++        // if the scan fails, it wouldn't be able to assert_eq! as it panicked!
++        assert_eq!(1, 1);
++    }
++    #[test]
++    fn udp_quad_zero_scanner_runs() {
++        let addrs = vec!["0.0.0.0".parse::<IpAddr>().unwrap()];
++        let range = PortRange {
++            start: 1,
++            end: 1_000,
++        };
++        let strategy = PortStrategy::pick(&Some(range), None, ScanOrder::Random);
++        let scanner = Scanner::new(
++            &addrs,
++            10,
++            Duration::from_millis(100),
++            1,
++            true,
++            strategy,
++            true,
++            vec![9000],
++            true,
++        );
++        block_on(scanner.run());
++        assert_eq!(1, 1);
++    }
++    #[test]
++    fn udp_google_dns_runs() {
++        let addrs = vec!["8.8.8.8".parse::<IpAddr>().unwrap()];
++        let range = PortRange {
++            start: 100,
++            end: 150,
++        };
++        let strategy = PortStrategy::pick(&Some(range), None, ScanOrder::Random);
++        let scanner = Scanner::new(
++            &addrs,
++            10,
++            Duration::from_millis(100),
++            1,
++            true,
++            strategy,
++            true,
++            vec![9000],
++            true,
+         );
+         block_on(scanner.run());
+         assert_eq!(1, 1);
+diff --git a/src/tui.rs b/src/tui.rs
+index 56eb906c..6f215f59 100644
+--- a/src/tui.rs
++++ b/src/tui.rs
+@@ -89,10 +89,14 @@ macro_rules! funny_opening {
+             "TCP handshake? More like a friendly high-five!",
+             "Scanning ports: The virtual equivalent of knocking on doors.",
+             "RustScan: Making sure 'closed' isn't just a state of mind.",
++            "RustScan: allowing you to send UDP packets into the void 1200x faster than NMAP",
+             "Port scanning: Because every port has a story to tell.",
+             "I scanned ports so fast, even my computer was surprised.",
++            "Scanning ports faster than you can say 'SYN ACK'",
+             "RustScan: Where '404 Not Found' meets '200 OK'.",
+             "RustScan: Exploring the digital landscape, one IP at a time.",
++            "TreadStone was here 🚀",
++            "With RustScan, I scan ports so fast, even my firewall gets whiplash 💨",
+         ];
+         let random_quote = quotes.choose(&mut rand::thread_rng()).unwrap();
+ 
+diff --git a/src/udp_packets.rs b/src/udp_packets.rs
+new file mode 100644
+index 00000000..7685450a
+--- /dev/null
++++ b/src/udp_packets.rs
+@@ -0,0 +1,279 @@
++pub mod udp_payload {
++    // const MAX_PAYLOAD_IPV4: usize = 65507; // 65,535 - 20 (IP header) - 8 (UDP header)
++    // const MAX_PAYLOAD_IPV6: usize = 65527; // 65,535 - 40 (IPv6 header) - 8 (UDP header)
++
++    /// From [RFC 768](https://www.rfc-editor.org/rfc/rfc768.txt)
++    /// We send blank UDP packets, unless the port is determined to be special.
++    ///
++    /// ```text
++    /// HEADER Handled by the OS
++    /// 0                   1                   2                   3
++    /// 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++    /// |          Source Port          |       Destination Port        |
++    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++    /// |            Length             |           Checksum            |
++    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++    /// We append the data, based on the port the the header
++    /// DATA
++    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++    /// |                    Data (based on port)                       |
++    /// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++    /// ```
++    ///
++    /// # Fields
++    ///
++    /// - **Source Port**: The source port number.
++    /// - **Destination Port**: The destination port number.
++    /// - **Length**: The length of the UDP header and data.
++    /// - **Checksum**: The checksum for error-checking.
++    /// - **Data**: The payload data, which can vary based on the port.
++    #[allow(clippy::match_single_binding)]
++    pub fn cust_payload(dst_prt: u16) -> Vec<u8> {
++        match dst_prt {
++            // 53 => craft_dns_query_packet(),
++            // 67 => craft_dhcpc_packet(),
++            // 123 => craft_ntp_packet(),
++            // 161 => craft_snmp_packet(),
++            _ => vec![],
++        }
++    }
++
++    pub fn craft_snmptrap_packet() -> Vec<u16> {
++        let version = vec![0x30, 0x82]; // SNMP version
++        let community_string = vec![0x04, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63]; // Community string "public"
++        let pdu_type = vec![0xa4, 0x82]; // PDU type for SNMP Trap
++        let enterprise_oid = vec![0x06, 0x09, 0x2b, 0x06, 0x01, 0x02, 0x01, 0x01, 0x01, 0x00]; // Enterprise OID
++
++        // Combine the components into a single SNMP Trap packet
++        [version, community_string, pdu_type, enterprise_oid].concat()
++    }
++
++    /// From [RFC 1592](https://www.rfc-editor.org/rfc/rfc1592.txt)
++    /// Crafts an SNMP packet based on the structure from RFC 1592.
++    ///
++    /// RFC 1592 defines the structure of an SNMP packet as follows
++    /// - **ASN.1 header**: 0x30
++    /// - **PDU length**: 37 + length of community name
++    /// - **SNMP version**: 0x02 0x01 0x00 (integer, length=1, value=0)
++    /// - **Community name**: A string of varying length
++    /// - **SNMP GET request**: 0xa0 0x1c (request type=0xa0, length=0x1c)
++    /// - **SNMP request ID**: 0x02 0x01 0x01 (integer, length=1, ID=1)
++    /// - **SNMP error status**: 0x02 0x01 0x00 (integer, length=1, error=0)
++    /// - **SNMP index**: 0x02 0x01 0x00 (integer, length=1, index=0)
++    /// - **VarBind list**: 0x30 0x11 (length=0x11)
++    /// - **VarBind**: 0x30 0x0f (length=0x0f)
++    /// - **Object ID**: 0x06 0x0b (length=0x0b)
++    /// - **Object instance**: 1.3.6.1.4.1.2.2.1.1.1.0
++    /// - **Null value**: 0x05 0x00 (length=0)
++    ///
++    /// The PDU length formula:
++    /// ```text
++    /// PDU_length = length of version field and string tag (4 bytes)
++    ///            + length of community length field (1 byte)
++    ///            + length of community name (depends...)
++    ///            + length of SNMP GET request (32 bytes)
++    /// ```
++    ///
++    /// # Returns
++    ///
++    /// A `Vec<u8>` representing the crafted SNMP packet.
++    pub fn craft_snmp_packet() -> Vec<u8> {
++        // TODO all versions of snmp
++        let v1 = vec![0x30, 0x29, 0x02, 0x01, 0x00];
++
++        let community_string = vec![0x04, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63];
++        let pdu_type = vec![0xa0, 0x1c];
++
++        let request_id = vec![0x02, 0x04, 0x7a, 0x69, 0x67, 0x71];
++        let error_status = vec![0x02, 0x01, 0x00];
++        let error_index = vec![0x02, 0x01, 0x00];
++        let variable_bindings = vec![
++            0x30, 0x0e, 0x30, 0x0c, 0x06, 0x08, 0x2b, 0x06, 0x01, 0x02, 0x01, 0x01, 0x01, 0x00,
++            0x05, 0x00,
++        ];
++
++        let _basic_snmp = [
++            0x30, 0x26, 0x02, 0x01, 0x01, 0x04, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0xa0,
++            0x19, 0x02, 0x04, 0x71, 0x64, 0xfe, 0xf1, 0x02, 0x01, 0x00, 0x02, 0x01, 0x00, 0x30,
++            0x0b, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x06, 0x01, 0x02, 0x01, 0x05, 0x00,
++        ];
++
++        [
++            v1,
++            community_string,
++            pdu_type,
++            request_id,
++            error_status,
++            error_index,
++            variable_bindings,
++        ]
++        .concat()
++    }
++
++    /// Constructs a DHCP packet based on the RFC 1541 Dynamic Host Configuration Protocol specification.
++    ///
++    ///
++    /// # Returns
++    ///
++    /// A `Vec<u8>` representing the DHCP packet.
++    ///
++    /// This function crafts a DHCP Discover packet with the following fields:
++    /// - **op**: BOOTREQUEST (1)
++    /// - **htype**: Ethernet (1)
++    /// - **hlen**: 6
++    /// - **hops**: 0
++    /// - **xid**: Random transaction ID
++    /// - **secs**: 0
++    /// - **flags**: 0x8000 (Broadcast)
++    /// - **ciaddr**: 0.0.0.0
++    /// - **yiaddr**: 0.0.0.0
++    /// - **siaddr**: 0.0.0.0
++    /// - **giaddr**: 0.0.0.0
++    /// - **chaddr**: 00:00:00:00:00:00 (Client MAC address)
++    /// - **sname**: Not given
++    /// - **file**: Not given
++    /// - **options**: DHCP options
++    pub fn craft_dhcpc_packet() -> Vec<u8> {
++        let mut packet = Vec::with_capacity(240);
++
++        // BOOTP message type: Boot Request (1)
++        packet.push(0x01);
++
++        // Hardware type: Ethernet (10Mb) (1)
++        packet.push(0x01);
++
++        // Hardware address length: 6
++        packet.push(0x06);
++
++        // Hops: 0
++        packet.push(0x00);
++
++        // Transaction ID: random (0x3903F326)
++        packet.extend(&[0x39, 0x03, 0xF3, 0x26]);
++
++        // Seconds elapsed: 0
++        packet.extend(&[0x00, 0x00]);
++
++        // Bootp flags: 0x8000 (Broadcast) (0x8000)
++        packet.extend(&[0x80, 0x00]);
++
++        // Client IP address: 0.0.0.0
++        packet.extend(&[0x00, 0x00, 0x00, 0x00]);
++
++        // Your (client) IP address: 0.0.0.0
++        packet.extend(&[0x00, 0x00, 0x00, 0x00]);
++
++        // Next server IP address: 0.0.0.0
++        packet.extend(&[0x00, 0x00, 0x00, 0x00]);
++
++        // Relay agent IP address: 0.0.0.0
++        packet.extend(&[0x00, 0x00, 0x00, 0x00]);
++
++        // Client MAC address: 00:00:00:00:00:00
++        packet.extend(&[0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
++
++        // Client hardware address padding: 00000000000000000000
++        packet.extend(&[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
++
++        // Server host name not given
++        packet.extend(&[0x00; 64]);
++
++        // Boot file name not given
++        packet.extend(&[0x00; 128]);
++
++        // Magic cookie: DHCP
++        packet.extend(&[0x63, 0x82, 0x53, 0x63]);
++
++        // DHCP Message Type: DHCP Discover (1)
++        packet.extend(&[0x35, 0x01, 0x01]);
++
++        // DHCP Option: Parameter Request List
++        packet.extend(&[0x37, 0x04, 0x01, 0x03, 0x06, 0x2a]);
++
++        // End Option
++        packet.push(0xff);
++
++        packet
++    }
++
++    /// Constructs a DNS query packet.
++    ///
++    /// The structure of the DNS packet is as follows:
++    ///
++    /// ```text
++    /// +---------------------+
++    /// |        Header       |
++    /// +---------------------+
++    /// |       Question      | the question for the name server
++    /// +---------------------+
++    /// |        Answer       | RRs answering the question
++    /// +---------------------+
++    /// |      Authority      | RRs pointing toward an authority
++    /// +---------------------+
++    /// |      Additional     | RRs holding additional information
++    /// +---------------------+
++    /// ```
++    ///
++    /// The function builds a DNS query packet with the following fields:
++    /// - **Header**: Contains the transaction ID and flags.
++    /// - **Question**: Specifies the query (e.g., the domain name to look up).
++    /// - **Answer**: Resource records that answer the question (empty for a query).
++    /// - **Authority**: Resource records that point toward an authority (empty for a query).
++    /// - **Additional**: Resource records holding additional information (empty for a query).
++    ///
++    /// # Returns
++    ///
++    /// A `Vec<u8>` representing the DNS query packet.
++    pub fn craft_dns_query_packet() -> Vec<u8> {
++        let mut packet = Vec::new();
++
++        // Transaction ID: Random
++        packet.extend(&[0x12, 0x34]);
++
++        // Flags: Standard query
++        packet.extend(&[0x01, 0x00]);
++        // Header ^
++
++        // Questions: 1
++        packet.extend(&[0x00, 0x01]);
++
++        // Answer RRs: 0
++        packet.extend(&[0x00, 0x00]);
++
++        // Authority RRs: 0
++        packet.extend(&[0x00, 0x00]);
++
++        // Additional RRs: 0
++        packet.extend(&[0x00, 0x00]);
++
++        // Query: www.google.com
++        let query_name = "www.google.com";
++        for part in query_name.split('.') {
++            packet.push(part.len() as u8);
++            packet.extend(part.as_bytes());
++        }
++        packet.push(0); // End of query name
++
++        // Query Type: A (host address)
++        packet.extend(&[0x00, 0x01]);
++
++        // Query Class: IN (internet)
++        packet.extend(&[0x00, 0x01]);
++
++        packet
++    }
++
++    /// Creates the simplest NTP packet possible
++    /// 0x1b followed by 47 0s, (Version = 3, Mode = 3)
++    pub fn craft_ntp_packet() -> Vec<u8> {
++        let mut packet = vec![0u8; 48];
++        packet[0] = 0x1b;
++        packet
++    }
++
++    // TODO add more packets for the top 1000 ports
++    // `sort -r -k3 /usr/share/nmap/nmap-services | grep udp | head -n 1000`
++    // There has to be a better way to structure this, maybe internal crate for packet payload
++    // creation
++}
+diff --git a/tests/timelimits.rs b/tests/timelimits.rs
+index f69a00de..37ce67b1 100644
+--- a/tests/timelimits.rs
++++ b/tests/timelimits.rs
+@@ -106,4 +106,58 @@ mod timelimits {
+             super::Duration::from_secs(26),
+         );
+     }
++    #[test]
++    #[ignore]
++    fn udp_scan_localhost() {
++        let timeout = super::Duration::from_secs(25);
++        super::run_rustscan_with_timeout(&["--greppable", "127.0.0.1", "--udp"], timeout);
++    }
++    #[test]
++    #[ignore]
++    fn udp_scan_google_com() {
++        super::run_rustscan_with_timeout(
++            &[
++                "--udp",
++                "--greppable",
++                "-u",
++                "5000",
++                "-b",
++                "2500",
++                "google.com",
++            ],
++            super::Duration::from_secs(28),
++        );
++    }
++    #[test]
++    #[ignore]
++    fn udp_scan_example_com() {
++        super::run_rustscan_with_timeout(
++            &[
++                "--udp",
++                "--greppable",
++                "-u",
++                "5000",
++                "-b",
++                "2500",
++                "example.com",
++            ],
++            super::Duration::from_secs(28),
++        );
++    }
++    #[test]
++    #[ignore]
++    fn udp_scan_rustscan_cmnatic_co_uk() {
++        super::run_rustscan_with_timeout(
++            &[
++                "--udp",
++                "--greppable",
++                "-u",
++                "5000",
++                "-b",
++                "2500",
++                "rustscan.cmnatic.co.uk",
++            ],
++            super::Duration::from_secs(26),
++        );
++    }
+ }
+
+From 4947158ff8871f78bb3e39703f720a0f886137ba Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Wed, 26 Jun 2024 07:57:09 +0100
+Subject: [PATCH 16/18] Bump clap from 4.5.6 to 4.5.7 (#601)
+
+Bumps [clap](https://github.com/clap-rs/clap) from 4.5.6 to 4.5.7.
+- [Release notes](https://github.com/clap-rs/clap/releases)
+- [Changelog](https://github.com/clap-rs/clap/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/clap-rs/clap/compare/v4.5.6...v4.5.7)
+
+---
+updated-dependencies:
+- dependency-name: clap
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Cargo.lock | 8 ++++----
+ Cargo.toml | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 47b35bf4..748f03a1 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -358,9 +358,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "clap"
+-version = "4.5.6"
++version = "4.5.7"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a9689a29b593160de5bc4aacab7b5d54fb52231de70122626c178e6a368994c7"
++checksum = "5db83dced34638ad474f39f250d7fea9598bdd239eaced1bdf45d597da0f433f"
+ dependencies = [
+  "clap_builder",
+  "clap_derive",
+@@ -368,9 +368,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "clap_builder"
+-version = "4.5.6"
++version = "4.5.7"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "2e5387378c84f6faa26890ebf9f0a92989f8873d4d380467bcd0d8d8620424df"
++checksum = "f7e204572485eb3fbf28f871612191521df159bc3e15a9f5064c66dba3a8c05f"
+ dependencies = [
+  "anstream",
+  "anstyle",
+diff --git a/Cargo.toml b/Cargo.toml
+index 905ef774..166af776 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -17,7 +17,7 @@ exclude = [
+ ]
+ 
+ [dependencies]
+-clap = { version = "4.5.6", features = ["derive", "wrap_help"] }
++clap = { version = "4.5.7", features = ["derive", "wrap_help"] }
+ colored = "2.1.0"
+ async-std = "1.7.0"
+ futures = "0.3"
+
+From dcb91d95e4422f68cac4e4186c3f0e5b226eee0a Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Wed, 26 Jun 2024 07:57:23 +0100
+Subject: [PATCH 17/18] Bump docker/build-push-action from 5 to 6 (#603)
+
+Bumps [docker/build-push-action](https://github.com/docker/build-push-action) from 5 to 6.
+- [Release notes](https://github.com/docker/build-push-action/releases)
+- [Commits](https://github.com/docker/build-push-action/compare/v5...v6)
+
+---
+updated-dependencies:
+- dependency-name: docker/build-push-action
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ .github/workflows/docker.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.github/workflows/docker.yml b/.github/workflows/docker.yml
+index cc06efe7..c718c3da 100644
+--- a/.github/workflows/docker.yml
++++ b/.github/workflows/docker.yml
+@@ -30,7 +30,7 @@ jobs:
+           flavor: latest=true
+ 
+       - name: Build and push Docker image
+-        uses: docker/build-push-action@v5
++        uses: docker/build-push-action@v6
+         with:
+           context: .
+           push: ${{ contains(fromJson('["push", "release"]'), github.event_name) }} # Publish to docker registry only on push event or new release.
+
+From 3873117324a1af07c96d94dca59827665f13f1d0 Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Wed, 26 Jun 2024 07:57:48 +0100
+Subject: [PATCH 18/18] Bump alpine from 3.20.0 to 3.20.1 (#604)
+
+Bumps alpine from 3.20.0 to 3.20.1.
+
+---
+updated-dependencies:
+- dependency-name: alpine
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+---
+ Dockerfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Dockerfile b/Dockerfile
+index 85162a94..34ef1b57 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -10,7 +10,7 @@ COPY src/ src/
+ RUN cargo build --release
+ 
+ # Release Stage
+-FROM alpine:3.20.0 as release
++FROM alpine:3.20.1 as release
+ LABEL author="Hydragyrum <https://github.com/Hydragyrum>"
+ LABEL author="LeoFVO <https://github.com/LeoFVO>"
+ 
