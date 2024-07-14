@@ -2,13 +2,15 @@
 %global cargo_install_lib 0
 
 Name: rustscan
-Version: 2.3.0
-Release: %autorelease
-Summary: Faster Nmap Scanning with Rust
+Version: 2.2.3
+Release: 1%{?dist}
+Summary: The modern port scanner
 
 License: GPL-3.0-only
 URL: https://github.com/rustscan/rustscan
 Source0: %{URL}/archive/%{version}.tar.gz
+
+Patch0: 0001-rc1.patch
 
 BuildRequires: cargo-rpm-macros >= 24
 BuildRequires: help2man
