@@ -10,6 +10,8 @@ License: GPL-3.0-only
 URL: https://github.com/rustscan/rustscan
 Source0: %{URL}/archive/%{version}.tar.gz
 
+Patch0: 0001-Adjust-anstream-version.patch
+
 BuildRequires: cargo-rpm-macros >= 24
 BuildRequires: help2man
 
